@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sectionDoorDetails"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="visible">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="25dp"
+        android:gravity="center"
+        android:text="OPENING MEASUREMENTS"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="375dp"
+        android:layout_marginBottom="16dp"
+        android:background="#FFFFFF">
+
+        <ImageView
+            android:id="@+id/imgDoorTemplate"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/commercial_template"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/etWidth"
+            android:layout_width="83dp"
+            android:layout_height="50dp"
+            android:background="@drawable/input_box_outline"
+            android:gravity="center"
+            android:hint="Opening\nWidth"
+            android:inputType="number"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.787" />
+
+        <EditText
+            android:id="@+id/etHeight"
+            android:layout_width="83dp"
+            android:layout_height="50dp"
+            android:background="@drawable/input_box_outline"
+            android:gravity="center"
+            android:hint="Opening\nHeight"
+            android:inputType="number"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.388" />
+
+        <EditText
+            android:id="@+id/etHeadroom"
+            android:layout_width="83dp"
+            android:layout_height="50dp"
+            android:background="@drawable/input_box_outline"
+            android:gravity="center"
+            android:hint="Headroom"
+            android:inputType="number"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.175"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.155" />
+
+        <EditText
+            android:id="@+id/etLeftSide"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:background="@drawable/input_box_outline"
+            android:gravity="center"
+            android:hint="L\nSide"
+            android:inputType="number"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.175"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.565" />
+
+        <EditText
+            android:id="@+id/etRightSide"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:background="@drawable/input_box_outline"
+            android:gravity="center"
+            android:hint="R\nSide"
+            android:inputType="number"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.828"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.566" />
+
+        <EditText
+            android:id="@+id/etBackroom"
+            android:layout_width="83dp"
+            android:layout_height="50dp"
+            android:background="@drawable/input_box_outline"
+            android:gravity="center"
+            android:hint="Backroom"
+            android:inputType="number"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.803"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.155" />
+
+        <com.example.employeepos2.MeasurementOverlayView
+            android:id="@+id/measurementDrawing"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.card.MaterialCardView android:layout_marginHorizontal="12dp" android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="#FFFFFF" app:cardCornerRadius="14dp" app:cardElevation="0dp" app:strokeWidth="1dp" app:strokeColor="#E5E7EB" android:layout_marginBottom="24dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DOOR SITE CONDITIONS" android:textSize="11sp" android:textColor="#CC0007" android:textStyle="bold" android:letterSpacing="0.05" android:layout_marginBottom="16dp" />
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mount to:" android:textSize="13sp" android:textStyle="bold" android:textColor="#1A1C1E" android:layout_marginBottom="8dp" />
+            <com.google.android.material.chip.ChipGroup android:id="@+id/rgMountTo" android:layout_width="match_parent" android:layout_height="wrap_content" app:singleSelection="true" android:layout_marginBottom="16dp">
+                <com.google.android.material.chip.Chip android:id="@+id/rbWood" style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Wood" />
+                <com.google.android.material.chip.Chip android:id="@+id/rbSteel" style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Steel" />
+                <com.google.android.material.chip.Chip android:id="@+id/rbConcrete" style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Concrete" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F3F4F6" android:layout_marginBottom="16dp" />
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Opening, jambs, spring pads, operator pad framed correctly?" android:textSize="13sp" android:textStyle="bold" android:textColor="#1A1C1E" android:layout_marginBottom="8dp" />
+            <com.google.android.material.chip.ChipGroup android:id="@+id/rgFramed" android:layout_width="match_parent" android:layout_height="wrap_content" app:singleSelection="true" android:layout_marginBottom="16dp">
+                <com.google.android.material.chip.Chip android:id="@+id/rbFramedYes" style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Yes" />
+                <com.google.android.material.chip.Chip android:id="@+id/rbFramedNo" style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F3F4F6" android:layout_marginBottom="16dp" />
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Are low voltage wires run correctly?" android:textSize="13sp" android:textStyle="bold" android:textColor="#1A1C1E" android:layout_marginBottom="8dp" />
+            <com.google.android.material.chip.ChipGroup android:id="@+id/rgVoltage" android:layout_width="match_parent" android:layout_height="wrap_content" app:singleSelection="true" android:layout_marginBottom="16dp">
+                <com.google.android.material.chip.Chip android:id="@+id/rbVoltYes" style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Yes" />
+                <com.google.android.material.chip.Chip android:id="@+id/rbVoltNo" style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" />
+                <com.google.android.material.chip.Chip android:id="@+id/rbVoltNotRun" style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Not Run Yet" />
+                <com.google.android.material.chip.Chip android:id="@+id/rbVoltNoOp" style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No Operator" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F3F4F6" android:layout_marginBottom="16dp" />
+
+            <LinearLayout android:id="@+id/llExistingDoorInfo" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Existing Door Info:" android:textSize="13sp" android:textStyle="bold" android:textColor="#1A1C1E" android:layout_marginBottom="12dp" />
+                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Brand" android:textColorHint="#000000" app:hintTextColor="#000000" app:boxStrokeColor="#000000" app:boxCornerRadiusBottomEnd="10dp" app:boxCornerRadiusBottomStart="10dp" app:boxCornerRadiusTopEnd="10dp" app:boxCornerRadiusTopStart="10dp" app:boxBackgroundColor="#FAFAFA" android:layout_marginBottom="8dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/etExistingBrand" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" android:textColor="#000000" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Model" android:textColorHint="#000000" app:hintTextColor="#000000" app:boxStrokeColor="#000000" app:boxCornerRadiusBottomEnd="10dp" app:boxCornerRadiusBottomStart="10dp" app:boxCornerRadiusTopEnd="10dp" app:boxCornerRadiusTopStart="10dp" app:boxBackgroundColor="#FAFAFA" android:layout_marginBottom="8dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/etExistingModel" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" android:textColor="#000000" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Color" android:textColorHint="#000000" app:hintTextColor="#000000" app:boxStrokeColor="#000000" app:boxCornerRadiusBottomEnd="10dp" app:boxCornerRadiusBottomStart="10dp" app:boxCornerRadiusTopEnd="10dp" app:boxCornerRadiusTopStart="10dp" app:boxBackgroundColor="#FAFAFA" android:layout_marginBottom="16dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/etExistingColor" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" android:textColor="#000000" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Track Size?" android:textSize="13sp" android:textStyle="bold" android:textColor="#1A1C1E" android:layout_marginBottom="8dp" />
+                <com.google.android.material.chip.ChipGroup android:id="@+id/rgTrackSize" android:layout_width="match_parent" android:layout_height="wrap_content" app:singleSelection="true" android:layout_marginBottom="16dp">
+                    <com.google.android.material.chip.Chip android:id="@+id/rbTrack2" style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2 Inch" />
+                    <com.google.android.material.chip.Chip android:id="@+id/rbTrack3" style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3 Inch" />
+                </com.google.android.material.chip.ChipGroup>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F3F4F6" android:layout_marginBottom="16dp" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/llDoorNotesAndPhotos" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Door notes:" android:textSize="13sp" android:textStyle="bold" android:textColor="#1A1C1E" android:layout_marginBottom="8dp" />
+                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Add door notes..." android:textColorHint="#000000" app:hintTextColor="#000000" app:boxStrokeColor="#000000" app:boxCornerRadiusBottomEnd="10dp" app:boxCornerRadiusBottomStart="10dp" app:boxCornerRadiusTopEnd="10dp" app:boxCornerRadiusTopStart="10dp" app:boxBackgroundColor="#FAFAFA" android:layout_marginBottom="16dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/etDoorNotes" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textMultiLine" android:minLines="2" android:textColor="#000000" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <TextView android:id="@+id/tvPhotoInstruction1" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="* Upload CLEAR photos of opening from the inside" android:textSize="12sp" android:textStyle="italic" android:textColor="#CC0007" android:layout_marginBottom="4dp" />
+                <TextView android:id="@+id/tvDoorTagInstruction" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="* Upload photo of door tag with brand, model, sizing, and specs" android:textSize="12sp" android:textStyle="italic" android:textColor="#CC0007" android:layout_marginBottom="4dp" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="* Upload photos of any issues found on site" android:textSize="12sp" android:textStyle="italic" android:textColor="#CC0007" android:layout_marginBottom="16dp" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/btnDoorPhoto" android:layout_width="match_parent" android:layout_height="48dp" android:text="ATTACH DOOR PHOTO" android:textColor="#CC0007" android:backgroundTint="#FFFFFF" app:strokeColor="#CC0007" app:strokeWidth="1dp" app:cornerRadius="10dp" />
+                <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:scrollbars="none" android:overScrollMode="never">
+                    <LinearLayout android:id="@+id/llDoorPhotos" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" />
+                </HorizontalScrollView>
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

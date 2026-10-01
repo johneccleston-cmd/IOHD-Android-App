@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F4F7">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F2F4F7"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="32dp">
+
+            <!-- Profile card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#E5E7EB"
+                app:cardBackgroundColor="#FFFFFF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="28dp"
+                    android:paddingBottom="22dp"
+                    android:paddingHorizontal="20dp">
+
+                    <!-- Admin menu anchored inside card, no layout shift -->
+                    <ImageView
+                        android:id="@+id/ivAdminMenu"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="end"
+                        android:layout_marginBottom="-8dp"
+                        android:padding="12dp"
+                        android:src="@drawable/ic_admin_menu"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:visibility="invisible"
+                        android:contentDescription="Admin menu" />
+
+                    <FrameLayout
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:id="@+id/tvAvatarInitials"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:gravity="center"
+                            android:textSize="36sp"
+                            android:textStyle="bold"
+                            android:textColor="#CC0007"
+                            android:background="@drawable/bg_avatar_ring"
+                            android:padding="4dp"
+                            android:visibility="invisible" />
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/imgUserProfilePic"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:padding="4dp"
+                            android:scaleType="centerCrop"
+                            android:visibility="invisible"
+                            app:strokeColor="#CC0007"
+                            app:strokeWidth="3dp"
+                            app:shapeAppearanceOverlay="@style/CircleImage"
+                            tools:src="@tools:sample/avatars" />
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tvProfileName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="John Doe"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="#1A1C1E"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:id="@+id/join_year_display"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Team member since 2022"
+                        android:textColor="#9CA3AF"
+                        android:textSize="12sp"
+                        android:layout_marginTop="3dp" />
+
+                    <TextView
+                        android:id="@+id/tvProfileRole"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="INSTALLER"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="#CC0007"
+                        android:letterSpacing="0.08"
+                        android:background="@drawable/bg_role_pill"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="4dp"
+                        android:layout_marginTop="10dp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Tool allowance card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardToolAllowance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="10dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#E5E7EB">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TOOL ALLOWANCE"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:textColor="#9CA3AF"
+                            android:letterSpacing="0.05" />
+
+                        <TextView
+                            android:id="@+id/tvToolAllowance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="$1,000 Remaining"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="#1A1C1E" />
+
+                    </LinearLayout>
+
+                    <com.example.employeepos2.LiquidProgressBar
+                        android:id="@+id/pbToolAllowance"
+                        android:layout_width="match_parent"
+                        android:layout_height="24dp"
+                        android:layout_marginTop="16dp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Achievements card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#E5E7EB"
+                app:cardBackgroundColor="#FFFFFF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ACHIEVEMENTS"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:textColor="#9CA3AF"
+                        android:letterSpacing="0.1"
+                        android:textAllCaps="true"
+                        android:layout_marginBottom="12dp" />
+
+                    <GridLayout
+                        android:id="@+id/badgeGrid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="4"
+                        android:rowCount="2"
+                        android:useDefaultMargins="false">
+
+                        <LinearLayout style="@style/BadgeCellNew">
+                            <FrameLayout style="@style/BadgeCircleFrame">
+                                <ImageView android:id="@+id/badge5Star" style="@style/BadgeIconNew" android:src="@drawable/ic_badge_star" />
+                            </FrameLayout>
+                            <TextView style="@style/BadgeLabelNew" android:text="5-Star" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/BadgeCellNew">
+                            <FrameLayout style="@style/BadgeCircleFrame">
+                                <ImageView android:id="@+id/badgeNoRecalls" style="@style/BadgeIconNew" android:src="@drawable/ic_badge_shield" />
+                            </FrameLayout>
+                            <TextView style="@style/BadgeLabelNew" android:text="No Recalls" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/BadgeCellNew">
+                            <FrameLayout style="@style/BadgeCircleFrame">
+                                <ImageView android:id="@+id/badgeLeadTech" style="@style/BadgeIconNew" android:src="@drawable/ic_badge_crown" />
+                            </FrameLayout>
+                            <TextView style="@style/BadgeLabelNew" android:text="Lead Tech" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/BadgeCellNew">
+                            <FrameLayout style="@style/BadgeCircleFrame">
+                                <ImageView android:id="@+id/badge1Year" style="@style/BadgeIconNew" android:src="@drawable/ic_badge_1" />
+                            </FrameLayout>
+                            <TextView style="@style/BadgeLabelNew" android:text="1 Year" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/BadgeCellNew">
+                            <FrameLayout style="@style/BadgeCircleFrame">
+                                <ImageView android:id="@+id/badge2Year" style="@style/BadgeIconNew" android:src="@drawable/ic_badge_2" />
+                            </FrameLayout>
+                            <TextView style="@style/BadgeLabelNew" android:text="2 Years" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/BadgeCellNew">
+                            <FrameLayout style="@style/BadgeCircleFrame">
+                                <ImageView android:id="@+id/badge3Year" style="@style/BadgeIconNew" android:src="@drawable/ic_badge_3" />
+                            </FrameLayout>
+                            <TextView style="@style/BadgeLabelNew" android:text="3 Years" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/BadgeCellNew">
+                            <FrameLayout style="@style/BadgeCircleFrame">
+                                <ImageView android:id="@+id/badge4Year" style="@style/BadgeIconNew" android:src="@drawable/ic_badge_4" />
+                            </FrameLayout>
+                            <TextView style="@style/BadgeLabelNew" android:text="4 Years" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/BadgeCellNew">
+                            <FrameLayout style="@style/BadgeCircleFrame">
+                                <ImageView android:id="@+id/badge5Year" style="@style/BadgeIconNew" android:src="@drawable/ic_badge_5" />
+                            </FrameLayout>
+                            <TextView style="@style/BadgeLabelNew" android:text="5 Years" />
+                        </LinearLayout>
+
+                    </GridLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMyDocuments"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="14dp"
+                android:text="My Documents"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#CC0007"
+                app:cornerRadius="14dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Log Out"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#6B7280"
+                android:backgroundTint="#F3F4F6"
+                app:cornerRadius="14dp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Admin drawer -->
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:background="#FFFFFF"
+        android:orientation="vertical"
+        android:paddingTop="48dp"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="24dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="4dp"
+            android:paddingBottom="20dp"
+            android:layout_marginBottom="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Management"
+                android:textColor="#1A1C1E"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ADMIN TOOLS"
+                android:textColor="#9CA3AF"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginTop="2dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#F3F4F6"
+            android:layout_marginBottom="16dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSideMasterSchedule"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginBottom="8dp"
+            android:text="Company Schedule"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            app:backgroundTint="#CC0007"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/ic_calendar"
+            app:iconTint="#FFFFFF"
+            app:iconSize="18dp"
+            app:iconPadding="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSideTeamCommissions"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:text="Team Commissions"
+            android:textColor="#374151"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            app:backgroundTint="#F9FAFB"
+            app:strokeColor="#E5E7EB"
+            app:strokeWidth="1dp"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/ic_money2"
+            app:iconTint="#6B7280"
+            app:iconSize="18dp"
+            app:iconPadding="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSideTeamToolAllowance"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="8dp"
+            android:text="Team Tool Allowance"
+            android:textColor="#374151"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            app:backgroundTint="#F9FAFB"
+            app:strokeColor="#E5E7EB"
+            app:strokeWidth="1dp"
+            app:cornerRadius="12dp"
+            app:icon="@android:drawable/ic_menu_manage"
+            app:iconTint="#6B7280"
+            app:iconSize="18dp"
+            app:iconPadding="8dp" />
+
+    </LinearLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

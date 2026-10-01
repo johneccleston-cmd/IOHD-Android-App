@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">IOHD</string>
+
+    <string name="welcome_user">Welcome, %1$s</string>
+    <string name="connection_failed">Connection failed. Check internet.</string>
+
+    <string name="job_number_display">Job #%1$s</string>
+    <string name="label_status">STATUS</string>
+    <string name="label_customer">CUSTOMER</string>
+    <string name="label_contact">CONTACT</string>
+    <string name="label_location">LOCATION</string>
+    <string name="label_team">ASSIGNED TEAM</string>
+    <string name="label_description">JOB DESCRIPTION</string>
+
+    <string name="unknown_customer">Unknown Customer</string>
+    <string name="no_contact">No Contact Info</string>
+    <string name="no_phone">No Phone</string>
+    <string name="no_jobs_found">No jobs found for today.</string>
+
+    <string name="btn_start_check">START SITE CHECK</string>
+
+    <string name="placeholder_name">Name</string>
+    <string name="placeholder_customer">Customer Name</string>
+    <string name="placeholder_phone">555-555-5555</string>
+    <string name="placeholder_address">Address</string>
+    <string name="placeholder_techs">Techs</string>
+    <string name="placeholder_desc">Description text...</string>
+
+
+
+
+
+    <string-array name="yes_no_options">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+</resources>

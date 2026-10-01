@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sectionOperatorDetails"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <View android:layout_width="match_parent" android:layout_height="3dp" android:background="#D1D5DB" android:layout_marginTop="8dp" android:layout_marginBottom="24dp" />
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="24dp" android:gravity="center" android:text="OPERATOR DETAILS" android:textColor="#000000" android:textSize="20sp" android:textStyle="bold" />
+
+    <com.google.android.material.card.MaterialCardView android:layout_marginHorizontal="12dp" android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="#FFFFFF" app:cardCornerRadius="14dp" app:cardElevation="0dp" app:strokeWidth="1dp" app:strokeColor="#E5E7EB" android:layout_marginBottom="24dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Operator pad framed correctly?" android:textSize="13sp" android:textStyle="bold" android:textColor="#1A1C1E" android:layout_marginBottom="8dp" />
+            <com.google.android.material.chip.ChipGroup android:id="@+id/rgOpFramed" android:layout_width="match_parent" android:layout_height="wrap_content" app:singleSelection="true" android:layout_marginBottom="16dp">
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Yes" />
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" />
+            </com.google.android.material.chip.ChipGroup>
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F3F4F6" android:layout_marginBottom="16dp" />
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Existing Operator Info:" android:textSize="13sp" android:textStyle="bold" android:textColor="#1A1C1E" android:layout_marginBottom="8dp" />
+            <com.google.android.material.chip.ChipGroup android:id="@+id/rgOpMount" android:layout_width="match_parent" android:layout_height="wrap_content" app:singleSelection="true" android:layout_marginBottom="16dp">
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Left side mount" />
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Right side mount" />
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Trolley opener" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Brand" android:textColorHint="#000000" app:hintTextColor="#000000" app:boxStrokeColor="#000000" app:boxCornerRadiusBottomEnd="10dp" app:boxCornerRadiusBottomStart="10dp" app:boxCornerRadiusTopEnd="10dp" app:boxCornerRadiusTopStart="10dp" app:boxBackgroundColor="#FAFAFA" android:layout_marginBottom="8dp">
+                <com.google.android.material.textfield.TextInputEditText android:id="@+id/etOpBrand" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" android:textColor="#000000" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Model" android:textColorHint="#000000" app:hintTextColor="#000000" app:boxStrokeColor="#000000" app:boxCornerRadiusBottomEnd="10dp" app:boxCornerRadiusBottomStart="10dp" app:boxCornerRadiusTopEnd="10dp" app:boxCornerRadiusTopStart="10dp" app:boxBackgroundColor="#FAFAFA" android:layout_marginBottom="16dp">
+                <com.google.android.material.textfield.TextInputEditText android:id="@+id/etOpModel" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" android:textColor="#000000" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Voltage:" android:textSize="13sp" android:textStyle="bold" android:textColor="#1A1C1E" android:layout_marginBottom="8dp" />
+            <com.google.android.material.chip.ChipGroup android:id="@+id/rgOpVoltage" android:layout_width="match_parent" android:layout_height="wrap_content" app:singleSelection="true" android:layout_marginBottom="16dp">
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="120V" />
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="240V" />
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="480V" />
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="208V - Upload Reading" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Phase:" android:textSize="13sp" android:textStyle="bold" android:textColor="#1A1C1E" android:layout_marginBottom="8dp" />
+            <com.google.android.material.chip.ChipGroup android:id="@+id/rgOpPhase" android:layout_width="match_parent" android:layout_height="wrap_content" app:singleSelection="true" android:layout_marginBottom="16dp">
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1PH" />
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3PH" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="HP:" android:textSize="13sp" android:textStyle="bold" android:textColor="#1A1C1E" android:layout_marginBottom="8dp" />
+            <com.google.android.material.chip.ChipGroup android:id="@+id/rgOpHP" android:layout_width="match_parent" android:layout_height="wrap_content" app:singleSelection="true" android:layout_marginBottom="16dp">
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⅓" />
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="½" />
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="¾" />
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1" />
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1 ½" />
+            </com.google.android.material.chip.ChipGroup>
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F3F4F6" android:layout_marginBottom="16dp" />
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Safety Devices:" android:textSize="13sp" android:textStyle="bold" android:textColor="#1A1C1E" android:layout_marginBottom="8dp" />
+            <com.google.android.material.chip.ChipGroup android:id="@+id/rgOpSafety" android:layout_width="match_parent" android:layout_height="wrap_content" app:singleSelection="false" android:layout_marginBottom="16dp">
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Photo Eyes" />
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Light Curtain" />
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2-Wire Electric Sensing Edge" />
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="4-Wire Electric Sensing Edge" />
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Wireless Sensing Edge" />
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Constant Pressure To Close" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F3F4F6" android:layout_marginBottom="16dp" />
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Wall Station:" android:textSize="13sp" android:textStyle="bold" android:textColor="#1A1C1E" android:layout_marginBottom="8dp" />
+            <com.google.android.material.chip.ChipGroup android:id="@+id/rgOpWallStation" android:layout_width="match_parent" android:layout_height="wrap_content" app:singleSelection="true" android:layout_marginBottom="16dp">
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1 Button" />
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3 Button" />
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Key Control" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F3F4F6" android:layout_marginBottom="16dp" />
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Wall station location:" android:textSize="13sp" android:textStyle="bold" android:textColor="#1A1C1E" android:layout_marginBottom="8dp" />
+            <com.google.android.material.chip.ChipGroup android:id="@+id/rgOpWallLocation" android:layout_width="match_parent" android:layout_height="wrap_content" app:singleSelection="true" android:layout_marginBottom="16dp">
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Left" />
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Right" />
+                <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Nearest Walk Door" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F3F4F6" android:layout_marginBottom="16dp" />
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Remotes:" android:textSize="13sp" android:textStyle="bold" android:textColor="#1A1C1E" android:layout_marginBottom="8dp" />
+                    <com.google.android.material.chip.ChipGroup android:id="@+id/rgOpRemotes" android:layout_width="match_parent" android:layout_height="wrap_content" app:singleSelection="true" android:layout_marginBottom="16dp">
+                        <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Yes" />
+                        <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" />
+                    </com.google.android.material.chip.ChipGroup>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Keypad:" android:textSize="13sp" android:textStyle="bold" android:textColor="#1A1C1E" android:layout_marginBottom="8dp" />
+                    <com.google.android.material.chip.ChipGroup android:id="@+id/rgOpKeypad" android:layout_width="match_parent" android:layout_height="wrap_content" app:singleSelection="true" android:layout_marginBottom="16dp">
+                        <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Yes" />
+                        <com.google.android.material.chip.Chip style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" />
+                    </com.google.android.material.chip.ChipGroup>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

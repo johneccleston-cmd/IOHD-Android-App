@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="stock_out">#CC0007</color> <color name="stock_available">#2E7D32</color> ```
+
+    ---
+
+    ### Step 2: Define the Strings (The "Pro" way)
+    To fix the "Do not concatenate" warnings, we use placeholders like `%1$s`. Open **`res/values/strings.xml`** and add these:
+
+    ```xml
+    <string name="job_header_format">Job #%1$s — %2$s</string>
+    <string name="qty_format">x%1$d</string>
+    <string name="in_stock_format">In Stock: %1$d</string>
+    <string name="out_of_stock">OUT OF STOCK</string>
+</resources>

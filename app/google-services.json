@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "348689274127",
+    "project_id": "integrity-door-field-ops",
+    "storage_bucket": "integrity-door-field-ops.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348689274127:android:8ece20df15d99027c65a7a",
+        "android_client_info": {
+          "package_name": "com.example.employeepos2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmA8n8leIlaMgTrmkx4LPKelZsZwbH-Jg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348689274127:android:90faf4ed4fd531fdc65a7a",
+        "android_client_info": {
+          "package_name": "com.integritydoors.pos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmA8n8leIlaMgTrmkx4LPKelZsZwbH-Jg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

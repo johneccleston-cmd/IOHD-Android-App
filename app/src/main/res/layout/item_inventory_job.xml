@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginBottom="16dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="#E5E7EB">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <TextView
+            android:id="@+id/tvJobHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Job #--- - Customer Name"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#1A1C1E" />
+
+        <TextView
+            android:id="@+id/tvJobCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Loading city..."
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="#CC0007" />
+
+        <TextView
+            android:id="@+id/tvJobPONumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="PO: ---"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#4B5563"
+            android:visibility="gone" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="14dp"
+            android:background="#F3F4F6" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="JOB DESCRIPTION"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="#1A1C1E"
+            android:letterSpacing="0.05" />
+
+        <TextView
+            android:id="@+id/tvJobDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Loading description..."
+            android:textSize="14sp"
+            android:textColor="#4B5563"
+            android:lineSpacingExtra="6dp" />
+
+        <LinearLayout
+            android:id="@+id/llNotesSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="14dp"
+                android:background="#F3F4F6" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TECH NOTES"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#B07D10"
+                android:letterSpacing="0.05" />
+
+            <TextView
+                android:id="@+id/tvJobNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Loading notes..."
+                android:textSize="14sp"
+                android:textColor="#7A5A10"
+                android:lineSpacingExtra="6dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="14dp"
+            android:background="#F3F4F6" />
+
+        <LinearLayout
+            android:id="@+id/llMaterialsList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
