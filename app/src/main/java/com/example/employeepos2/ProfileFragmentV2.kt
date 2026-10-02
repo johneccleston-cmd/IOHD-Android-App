@@ -193,12 +193,13 @@ class ProfileFragmentV2 : Fragment() {
                 start()
             }
 
-            val hasMasterAccess = data.name.equals("Ryan Schwartz", ignoreCase = true) ||
-                    data.role.uppercase().let { it == "OWNER" || it == "ADMIN" || it == "OFFICE MANAGER" || it == "OFFICE" }
+            val roleUpper = data.role.uppercase()
+            val isAdmin = roleUpper == "OWNER" || roleUpper == "ADMIN" || roleUpper == "OFFICE MANAGER"
+            val isOfficeStaff = isAdmin || roleUpper == "OFFICE"
 
-            rootView.findViewById<View>(R.id.cardToolAllowance)?.visibility = if (hasMasterAccess) View.GONE else View.VISIBLE
-            ivAdminMenu.visibility = if (hasMasterAccess) View.VISIBLE else View.GONE
-            drawerLayout.setDrawerLockMode(if (hasMasterAccess) DrawerLayout.LOCK_MODE_UNLOCKED else DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+            rootView.findViewById<View>(R.id.cardToolAllowance)?.visibility = if (isOfficeStaff) View.GONE else View.VISIBLE
+            ivAdminMenu.visibility = if (isAdmin) View.VISIBLE else View.GONE
+            drawerLayout.setDrawerLockMode(if (isAdmin) DrawerLayout.LOCK_MODE_UNLOCKED else DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
 
             // 🔥 HIDE THE TEAM COMMISSIONS BUTTON IF THE USER IS "OFFICE"
             if (data.role.uppercase() == "OFFICE") {
