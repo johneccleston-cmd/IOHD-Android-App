@@ -8,7 +8,6 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.gson.Gson
@@ -39,7 +38,7 @@ class SiteCheckMenuActivity : BaseActivity() {
             finish()
         }
 
-        findViewById<CardView>(R.id.cardNewConstruction)?.setOnClickListener {
+        findViewById<View>(R.id.cardNewConstruction)?.setOnClickListener {
             val intent = Intent(this, SiteCheckActivity::class.java).apply {
                 putExtra("SF_JOB_NUM", jobNumber)
                 putExtra("SF_CUSTOMER_NAME", customerName)
@@ -50,7 +49,7 @@ class SiteCheckMenuActivity : BaseActivity() {
             startActivity(intent)
         }
 
-        findViewById<CardView>(R.id.cardReplacement)?.setOnClickListener {
+        findViewById<View>(R.id.cardReplacement)?.setOnClickListener {
             val intent = Intent(this, ReplacementQuestionsActivity::class.java).apply {
                 putExtra("SF_JOB_NUM", jobNumber)
                 putExtra("SF_CUSTOMER_NAME", customerName)
@@ -61,7 +60,7 @@ class SiteCheckMenuActivity : BaseActivity() {
             startActivity(intent)
         }
 
-        findViewById<CardView>(R.id.cardService)?.setOnClickListener {
+        findViewById<View>(R.id.cardService)?.setOnClickListener {
             val intent = Intent(this, SiteCheckActivity::class.java).apply {
                 putExtra("SF_JOB_NUM", jobNumber)
                 putExtra("SF_CUSTOMER_NAME", customerName)

@@ -73,7 +73,7 @@
         android:elevation="6dp"
         android:paddingHorizontal="16dp"
         android:paddingVertical="10dp"
-        android:text="Center barcode in frame"
+        android:text="Center the barcode in the frame"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -85,11 +85,11 @@
         android:id="@+id/scanControls"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="12dp"
         android:visibility="gone"
         app:cardBackgroundColor="#FFFFFF"
-        app:cardCornerRadius="28dp"
-        app:cardElevation="12dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -111,9 +111,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Scanned Item"
-                android:textColor="#6B7280"
-                android:textSize="14sp" />
+                android:letterSpacing="0.1"
+                android:text="SCANNED ITEM"
+                android:textColor="#9CA3AF"
+                android:textSize="11sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvScannedCode"
@@ -122,7 +124,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="4dp"
                 android:text="123456789"
-                android:textColor="#111827"
+                android:textColor="#1A1C1E"
                 android:textSize="28sp"
                 android:textStyle="bold" />
 
@@ -130,9 +132,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Quantity"
-                android:textColor="#374151"
-                android:textSize="14sp"
+                android:letterSpacing="0.1"
+                android:text="QUANTITY"
+                android:textColor="#9CA3AF"
+                android:textSize="11sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.card.MaterialCardView
@@ -141,7 +144,7 @@
                 android:layout_marginTop="8dp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="0dp"
-                app:strokeColor="#D1D5DB"
+                app:strokeColor="#E5E7EB"
                 app:strokeWidth="1dp">
 
                 <FrameLayout
@@ -183,14 +186,15 @@
                     android:layout_marginEnd="6dp"
                     android:layout_weight="1"
                     android:paddingHorizontal="4dp"
-                    android:text="Deduct Stock"
+                    android:text="Deduct stock"
                     android:textAllCaps="false"
-                    android:textColor="#000000"
-                    android:textSize="12sp"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
                     android:textStyle="bold"
                     app:autoSizeTextType="uniform"
-                    app:backgroundTint="#EF4444"
-                    app:cornerRadius="16dp" />
+                    app:backgroundTint="#CC0007"
+                    app:cornerRadius="14dp"
+                    app:elevation="0dp" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnAdd"
@@ -199,14 +203,15 @@
                     android:layout_marginStart="6dp"
                     android:layout_weight="1"
                     android:paddingHorizontal="4dp"
-                    android:text="Add Stock"
+                    android:text="Add stock"
                     android:textAllCaps="false"
-                    android:textColor="#000000"
-                    android:textSize="12sp"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
                     android:textStyle="bold"
                     app:autoSizeTextType="uniform"
-                    app:backgroundTint="#22C55E"
-                    app:cornerRadius="16dp" />
+                    app:backgroundTint="#15803D"
+                    app:cornerRadius="14dp"
+                    app:elevation="0dp" />
 
             </LinearLayout>
 
@@ -216,11 +221,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:layout_marginTop="12dp"
-                android:text="Scan Another Item"
+                android:text="Scan another item"
                 android:textAllCaps="false"
-                android:textColor="#111827"
-                app:cornerRadius="16dp"
-                app:strokeColor="#D1D5DB" />
+                android:textColor="#1A1C1E"
+                android:textStyle="bold"
+                app:cornerRadius="14dp"
+                app:strokeColor="#E5E7EB" />
 
         </LinearLayout>
 

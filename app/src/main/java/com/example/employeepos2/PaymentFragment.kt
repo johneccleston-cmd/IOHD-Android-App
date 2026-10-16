@@ -10,8 +10,8 @@ class PaymentFragment : Fragment(R.layout.activity_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val btnServiceFusion = view.findViewById<com.google.android.material.card.MaterialCardView>(R.id.btnServiceFusion)
-        val btnNewCharge = view.findViewById<com.google.android.material.card.MaterialCardView>(R.id.btnNewCharge)
+        val btnServiceFusion = view.findViewById<View>(R.id.btnServiceFusion)
+        val btnNewCharge = view.findViewById<View>(R.id.btnNewCharge)
 
         // 1. Service Fusion Flow - Swaps to the Lookup Fragment
         btnServiceFusion?.setOnClickListener {

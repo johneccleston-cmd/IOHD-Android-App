@@ -1,313 +1,396 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Flat full-page job detail: sections separated by hairlines, no cards. -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F9FB"
+    android:background="#FFFFFF"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:orientation="vertical">
 
+        <!-- Header -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="20dp">
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
 
-            <TextView
-                android:id="@+id/tvDetailsJobNumber"
-                android:layout_width="0dp"
-                android:layout_height="35dp"
-                android:layout_weight="1"
-                android:layout_marginEnd="12dp"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:text="Job #---"
-                android:textColor="#1A1C1E"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="12sp"
-                android:autoSizeMaxTextSize="20sp"
-                app:autoSizeTextType="uniform"
-                app:autoSizeMinTextSize="12sp"
-                app:autoSizeMaxTextSize="20sp"
-                app:autoSizeStepGranularity="1sp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvDetailsJobNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:letterSpacing="0.1"
+                    android:maxLines="1"
+                    android:text="Job #---"
+                    android:textAllCaps="true"
+                    android:textColor="#CC0007"
+                    android:textSize="11.5sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvDetailsStatusBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_status_badge"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="5dp"
+                    android:letterSpacing="0.06"
+                    android:text="STATUS"
+                    android:textAllCaps="true"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/tvDetailsStatusBadge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="STATUS"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF"
-                android:background="@drawable/bg_status_badge"
-                android:paddingHorizontal="12dp"
-                android:paddingVertical="6dp"
-                android:textAllCaps="true" />
-        </LinearLayout>
-
-        <com.google.android.material.card.MaterialCardView
-            style="@style/Widget.App.CardView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp">
-
-            <LinearLayout
+                android:id="@+id/tvDetailsCustomer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="18dp">
-
-                <TextView
-                    style="@style/TextAppearance.App.SectionLabel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="CUSTOMER" />
-
-                <TextView
-                    android:id="@+id/tvDetailsCustomer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Customer Name"
-                    android:textSize="18sp"
-                    android:textColor="#4B5563" />
-
-                <View style="@style/Divider" />
-
-                <TextView
-                    style="@style/TextAppearance.App.SectionLabel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="CONTACT" />
-
-                <TextView
-                    android:id="@+id/tvDetailsContact"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Contact Name"
-                    android:textSize="15sp"
-                    android:textColor="#4B5563" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            style="@style/Widget.App.CardView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp">
+                android:layout_marginTop="8dp"
+                android:text="Customer Name"
+                android:textColor="#1A1C1E"
+                android:textSize="28sp"
+                android:textStyle="bold" />
 
             <LinearLayout
+                android:id="@+id/rowDetailsLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="18dp">
+                android:layout_marginTop="8dp"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="top"
+                android:orientation="horizontal">
 
-                <TextView
-                    style="@style/TextAppearance.App.SectionLabel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="LOCATION" />
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginTop="2dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_job_pin" />
 
                 <TextView
                     android:id="@+id/tvDetailsLocation"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:lineSpacingMultiplier="1.2"
                     android:text="Address"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:textColor="#CC0007" />
-
-                <View style="@style/Divider" />
-
-                <TextView
-                    style="@style/TextAppearance.App.SectionLabel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="ASSIGNED TECHS" />
-
-                <TextView
-                    android:id="@+id/tvDetailsTechs"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Tech Names"
-                    android:textSize="15sp"
-                    android:textColor="#4B5563" />
-
-                <LinearLayout
-                    android:id="@+id/llDetailsPoSection"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-
-                    <View style="@style/Divider" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
-
-                        <TextView
-                            style="@style/TextAppearance.App.SectionLabel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="PO#:" />
-
-                        <TextView
-                            android:id="@+id/tvDetailsPONumber"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:text="---"
-                            android:textSize="15sp"
-                            android:textColor="#4B5563" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <View style="@style/Divider" />
-
-                <TextView
-                    style="@style/TextAppearance.App.SectionLabel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="JOB DESCRIPTION" />
-
-                <TextView
-                    android:id="@+id/tvDetailsDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Description text..."
-                    android:textSize="14sp"
-                    android:lineSpacingExtra="6dp"
-                    android:textColor="#4B5563" />
+                    android:textColor="#4B5563"
+                    android:textSize="15sp" />
             </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardJobNotes"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDirections"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#CC0007"
+                    android:text="Directions"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14.5sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="12dp"
+                    app:elevation="0dp"
+                    app:icon="@drawable/ic_job_directions_white"
+                    app:iconGravity="textStart"
+                    app:iconPadding="8dp"
+                    app:iconTint="@null" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOpenServiceFusion"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#FFFFFF"
+                    android:text="Service Fusion"
+                    android:textAllCaps="false"
+                    android:textColor="#1A1C1E"
+                    android:textSize="14.5sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="12dp"
+                    app:elevation="0dp"
+                    app:strokeColor="#E5E7EB"
+                    app:strokeWidth="1dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E5E7EB" />
+
+        <!-- Contact -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:visibility="gone"
-            app:cardBackgroundColor="#FFFBF0"
-            app:cardCornerRadius="14dp"
-            app:cardElevation="0dp"
-            app:strokeColor="#F5DFA0"
-            app:strokeWidth="1dp">
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.1"
+                android:text="CONTACT"
+                android:textColor="#9CA3AF"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDetailsContact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Contact Name"
+                android:textColor="#1A1C1E"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="20dp"
+            android:background="#E5E7EB" />
+
+        <!-- Techs -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.1"
+                android:text="ASSIGNED TECHS"
+                android:textColor="#9CA3AF"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDetailsTechs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Tech Names"
+                android:textColor="#1A1C1E"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- PO (optional) -->
+        <LinearLayout
+            android:id="@+id/llDetailsPoSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="20dp"
+                android:background="#E5E7EB" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="18dp">
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.1"
+                    android:text="PO NUMBER"
+                    android:textColor="#9CA3AF"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvDetailsPONumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="---"
+                    android:textColor="#1A1C1E"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E5E7EB" />
+
+        <!-- Description -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.1"
+                android:text="WORK DESCRIPTION"
+                android:textColor="#9CA3AF"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDetailsDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:lineSpacingExtra="5dp"
+                android:text="Description text..."
+                android:textColor="#374151"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <!-- Notes for techs: full-width amber band, still flat -->
+        <LinearLayout
+            android:id="@+id/cardJobNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#FDE68A" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFBEB"
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:letterSpacing="0.1"
                     android:text="NOTES FOR TECHS"
-                    android:textSize="13sp"
-                    android:textStyle="bold"
-                    android:textColor="#B07D10"
-                    android:letterSpacing="0.05" />
+                    android:textColor="#B45309"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvJobNotes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:textSize="14sp"
-                    android:lineSpacingExtra="6dp"
-                    android:textColor="#7A5A10" />
+                    android:layout_marginTop="6dp"
+                    android:lineSpacingExtra="5dp"
+                    android:textColor="#78350F"
+                    android:textSize="15sp" />
             </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.card.MaterialCardView
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#FDE68A" />
+        </LinearLayout>
+
+        <!-- Line items (only shown when present) -->
+        <LinearLayout
             android:id="@+id/cardLineItems"
-            style="@style/Widget.App.CardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="16dp"
             android:visibility="gone">
 
-            <LinearLayout
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.1"
+                android:text="LINE ITEMS"
+                android:textColor="#9CA3AF"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvLineItems"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="18dp">
+                android:layout_marginTop="6dp"
+                android:lineSpacingExtra="5dp"
+                android:textColor="#374151"
+                android:textSize="15sp" />
+        </LinearLayout>
 
-                <TextView
-                    style="@style/TextAppearance.App.SectionLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="LINE ITEMS" />
-
-                <TextView
-                    android:id="@+id/tvLineItems"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:textSize="14sp"
-                    android:lineSpacingExtra="6dp"
-                    android:textColor="#4B5563" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnStartSiteCheck"
+        <!-- Primary actions -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="#CC0007"
-            android:letterSpacing="0.08"
-            android:text="START SITE CHECK"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp"
-            app:cornerRadius="14dp"
-            app:elevation="0dp" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="28dp">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnOpenServiceFusion"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="#FFFFFF"
-            android:letterSpacing="0.06"
-            android:text="OPEN SERVICE FUSION"
-            android:textColor="#4B5563"
-            android:textSize="14sp"
-            app:cornerRadius="14dp"
-            app:elevation="0dp"
-            app:strokeColor="#E5E7EB"
-            app:strokeWidth="1dp" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnStartSiteCheck"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:backgroundTint="#CC0007"
+                android:text="Start site check"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="15.5sp"
+                android:textStyle="bold"
+                app:cornerRadius="14dp"
+                app:elevation="0dp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCollectPayment"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="32dp"
-            android:backgroundTint="#1A7A4A"
-            android:letterSpacing="0.08"
-            android:text="COLLECT PAYMENT"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp"
-            app:cornerRadius="14dp"
-            app:elevation="0dp" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCollectPayment"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#15803D"
+                android:text="Collect payment"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="15.5sp"
+                android:textStyle="bold"
+                app:cornerRadius="14dp"
+                app:elevation="0dp" />
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

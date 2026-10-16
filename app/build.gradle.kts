@@ -26,7 +26,7 @@ android {
         targetSdk = 36
 
         // 🔥 Bumped to 28 so Google Play accepts the clean upload!
-        versionCode = 33
+        versionCode = 34
         versionName = "1.0"
 
         buildConfigField("String", "API_SECRET", "\"$apiSecret\"")

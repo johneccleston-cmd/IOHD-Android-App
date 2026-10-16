@@ -236,6 +236,47 @@ class ProfileFragmentV2 : Fragment() {
         }
     }
 
+    /** Earned badges get a tinted gradient tile with a coloured edge and pop in; locked ones are grey and quiet. */
+    private fun styleBadge(icon: ImageView, id: Int, earned: Boolean, index: Int) {
+        val frame = icon.parent as View
+        val dp = resources.displayMetrics.density
+        val accent = Color.parseColor(
+            when (id) {
+                R.id.badge5Star -> "#F59E0B"
+                R.id.badgeNoRecalls -> "#15803D"
+                R.id.badgeLeadTech -> "#CC0007"
+                R.id.badge1Year -> "#B45309"
+                R.id.badge2Year -> "#64748B"
+                R.id.badge3Year -> "#0369A1"
+                R.id.badge4Year -> "#1D4ED8"
+                else -> "#7C3AED"
+            }
+        )
+        val tile = android.graphics.drawable.GradientDrawable(
+            android.graphics.drawable.GradientDrawable.Orientation.TL_BR,
+            if (earned) intArrayOf(Color.argb(70, Color.red(accent), Color.green(accent), Color.blue(accent)), Color.argb(14, Color.red(accent), Color.green(accent), Color.blue(accent)))
+            else intArrayOf(Color.parseColor("#F1F5F9"), Color.parseColor("#F8FAFC"))
+        ).apply {
+            cornerRadius = 18 * dp
+            if (earned) setStroke((1.5f * dp).toInt(), accent) else setStroke((1 * dp).toInt(), Color.parseColor("#E2E8F0"))
+        }
+        frame.background = tile
+        frame.elevation = if (earned) 4 * dp else 0f
+        frame.alpha = if (earned) 1f else 0.7f
+        icon.colorFilter = if (earned) null else android.graphics.ColorMatrixColorFilter(
+            android.graphics.ColorMatrix().apply { setSaturation(0f) }
+        )
+        icon.alpha = if (earned) 1f else 0.4f
+
+        val motion = android.provider.Settings.Global.getFloat(requireContext().contentResolver, android.provider.Settings.Global.ANIMATOR_DURATION_SCALE, 1f) != 0f
+        if (motion) {
+            frame.scaleX = 0.5f; frame.scaleY = 0.5f; frame.alpha = 0f
+            frame.animate().scaleX(1f).scaleY(1f).alpha(if (earned) 1f else 0.7f)
+                .setStartDelay(120L + index * 70L).setDuration(420)
+                .setInterpolator(android.view.animation.OvershootInterpolator(2f)).start()
+        }
+    }
+
     private fun setupBadges(rootView: View, name: String, badgeStatus: Map<String, Boolean>) {
         data class BadgeInfo(val prefKey: String, val title: String, val description: String)
         val badgeMap = mapOf(
@@ -249,12 +290,13 @@ class ProfileFragmentV2 : Fragment() {
             R.id.badge5Year to BadgeInfo("Y5", "Legacy Builder", "Five years of legendary service. A true veteran, a master of the craft, and a mentor to all.")
         )
 
+        var index = 0
         for ((id, info) in badgeMap) {
             val badgeView = rootView.findViewById<ImageView>(id) ?: continue
             val earned = badgeStatus[info.prefKey] ?: false
             val hasBadge = name.equals("Ryan Schwartz", ignoreCase = true) || earned
 
-            (badgeView.parent as View).alpha = if (hasBadge) 1.0f else 0.15f
+            styleBadge(badgeView, id, hasBadge, index++)
             badgeView.isClickable = true
             badgeView.setOnClickListener {
                 showBadgeDialog(badgeView, info.title, info.description, hasBadge)

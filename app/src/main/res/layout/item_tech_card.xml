@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="#FFFFFF"
-    app:cardCornerRadius="14dp"
-    app:cardElevation="0dp"
-    app:strokeWidth="1dp"
-    app:strokeColor="#E5E7EB"
-    android:layout_marginBottom="12dp">
+    android:background="?attr/selectableItemBackground"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="20dp"
-        android:gravity="center_vertical">
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="16dp">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -28,27 +26,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tech Name"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#1A1C1E" />
+                android:textColor="#1A1C1E"
+                android:textSize="17sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvTechRole"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:text="Technician"
-                android:textSize="13sp"
-                android:textColor="#9CA3AF"
-                android:layout_marginTop="2dp" />
+                android:textColor="#6B7280"
+                android:textSize="13.5sp" />
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="VIEW 〉"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:textColor="#CC0007" />
-
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_job_chevron" />
     </LinearLayout>
-</com.google.android.material.card.MaterialCardView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="20dp"
+            android:background="#E5E7EB" />
+</LinearLayout>

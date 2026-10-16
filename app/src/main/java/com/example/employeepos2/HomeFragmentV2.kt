@@ -71,6 +71,8 @@ class HomeFragmentV2 : Fragment(R.layout.fragment_home_v2) {
 
         view.findViewById<TextView>(R.id.tvDailySummary).text = lastSummary
         welcomeText.text = "${getGreeting()}, $name"
+        view.findViewById<TextView>(R.id.tvDateLabel).text =
+            java.text.SimpleDateFormat("EEEE, MMM d", java.util.Locale.getDefault()).format(java.util.Date())
 
         val cleanName = name.trim()
         val cleanRole = role.trim().uppercase()
@@ -257,6 +259,12 @@ class HomeFragmentV2 : Fragment(R.layout.fragment_home_v2) {
                 ))
             }
             jobAdapter.submitList(jobList)
+            view?.findViewById<TextView>(R.id.tvScheduleCount)?.apply {
+                text = jobList.size.toString()
+                visibility = if (jobList.isEmpty()) View.GONE else View.VISIBLE
+            }
+            view?.findViewById<View>(R.id.tvScheduleEmpty)?.visibility =
+                if (jobList.isEmpty()) View.VISIBLE else View.GONE
         } catch (e: Exception) {
             Log.e("HOME", "Parsing error", e)
         }

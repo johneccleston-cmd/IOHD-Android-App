@@ -13,10 +13,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="25dp"
-        android:gravity="center"
+        android:gravity="start" android:paddingHorizontal="20dp" android:letterSpacing="0.1"
         android:text="OPENING MEASUREMENTS"
-        android:textColor="#000000"
-        android:textSize="18sp"
+        android:textColor="#CC0007"
+        android:textSize="12sp"
         android:textStyle="bold" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,8 +44,8 @@
             android:gravity="center"
             android:hint="Opening\nWidth"
             android:inputType="number"
-            android:textColor="#000000"
-            android:textColorHint="#000000"
+            android:textColor="#1A1C1E"
+            android:textColorHint="#6B7280"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,8 +61,8 @@
             android:gravity="center"
             android:hint="Opening\nHeight"
             android:inputType="number"
-            android:textColor="#000000"
-            android:textColorHint="#000000"
+            android:textColor="#1A1C1E"
+            android:textColorHint="#6B7280"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -79,8 +79,8 @@
             android:gravity="center"
             android:hint="Headroom"
             android:inputType="number"
-            android:textColor="#000000"
-            android:textColorHint="#000000"
+            android:textColor="#1A1C1E"
+            android:textColorHint="#6B7280"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -97,8 +97,8 @@
             android:gravity="center"
             android:hint="L\nSide"
             android:inputType="number"
-            android:textColor="#000000"
-            android:textColorHint="#000000"
+            android:textColor="#1A1C1E"
+            android:textColorHint="#6B7280"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -115,8 +115,8 @@
             android:gravity="center"
             android:hint="R\nSide"
             android:inputType="number"
-            android:textColor="#000000"
-            android:textColorHint="#000000"
+            android:textColor="#1A1C1E"
+            android:textColorHint="#6B7280"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -133,8 +133,8 @@
             android:gravity="center"
             android:hint="Backroom"
             android:inputType="number"
-            android:textColor="#000000"
-            android:textColorHint="#000000"
+            android:textColor="#1A1C1E"
+            android:textColorHint="#6B7280"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -154,7 +154,7 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.card.MaterialCardView android:layout_marginHorizontal="12dp" android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="#FFFFFF" app:cardCornerRadius="14dp" app:cardElevation="0dp" app:strokeWidth="1dp" app:strokeColor="#E5E7EB" android:layout_marginBottom="24dp">
+    <com.google.android.material.card.MaterialCardView android:layout_marginHorizontal="12dp" android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="#FFFFFF" app:cardCornerRadius="0dp" app:cardElevation="0dp" app:strokeWidth="0dp" app:strokeColor="#E5E7EB" android:layout_marginBottom="24dp">
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
 
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DOOR SITE CONDITIONS" android:textSize="11sp" android:textColor="#CC0007" android:textStyle="bold" android:letterSpacing="0.05" android:layout_marginBottom="16dp" />
@@ -188,14 +188,14 @@
 
             <LinearLayout android:id="@+id/llExistingDoorInfo" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Existing Door Info:" android:textSize="13sp" android:textStyle="bold" android:textColor="#1A1C1E" android:layout_marginBottom="12dp" />
-                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Brand" android:textColorHint="#000000" app:hintTextColor="#000000" app:boxStrokeColor="#000000" app:boxCornerRadiusBottomEnd="10dp" app:boxCornerRadiusBottomStart="10dp" app:boxCornerRadiusTopEnd="10dp" app:boxCornerRadiusTopStart="10dp" app:boxBackgroundColor="#FAFAFA" android:layout_marginBottom="8dp">
-                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/etExistingBrand" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" android:textColor="#000000" />
+                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Brand" android:textColorHint="#6B7280" app:hintTextColor="#CC0007" app:boxStrokeColor="@color/login_box_stroke" app:boxCornerRadiusBottomEnd="12dp" app:boxCornerRadiusBottomStart="12dp" app:boxCornerRadiusTopEnd="12dp" app:boxCornerRadiusTopStart="12dp" app:boxBackgroundColor="#FFFFFF" android:layout_marginBottom="8dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/etExistingBrand" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" android:textColor="#1A1C1E" />
                 </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Model" android:textColorHint="#000000" app:hintTextColor="#000000" app:boxStrokeColor="#000000" app:boxCornerRadiusBottomEnd="10dp" app:boxCornerRadiusBottomStart="10dp" app:boxCornerRadiusTopEnd="10dp" app:boxCornerRadiusTopStart="10dp" app:boxBackgroundColor="#FAFAFA" android:layout_marginBottom="8dp">
-                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/etExistingModel" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" android:textColor="#000000" />
+                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Model" android:textColorHint="#6B7280" app:hintTextColor="#CC0007" app:boxStrokeColor="@color/login_box_stroke" app:boxCornerRadiusBottomEnd="12dp" app:boxCornerRadiusBottomStart="12dp" app:boxCornerRadiusTopEnd="12dp" app:boxCornerRadiusTopStart="12dp" app:boxBackgroundColor="#FFFFFF" android:layout_marginBottom="8dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/etExistingModel" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" android:textColor="#1A1C1E" />
                 </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Color" android:textColorHint="#000000" app:hintTextColor="#000000" app:boxStrokeColor="#000000" app:boxCornerRadiusBottomEnd="10dp" app:boxCornerRadiusBottomStart="10dp" app:boxCornerRadiusTopEnd="10dp" app:boxCornerRadiusTopStart="10dp" app:boxBackgroundColor="#FAFAFA" android:layout_marginBottom="16dp">
-                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/etExistingColor" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" android:textColor="#000000" />
+                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Color" android:textColorHint="#6B7280" app:hintTextColor="#CC0007" app:boxStrokeColor="@color/login_box_stroke" app:boxCornerRadiusBottomEnd="12dp" app:boxCornerRadiusBottomStart="12dp" app:boxCornerRadiusTopEnd="12dp" app:boxCornerRadiusTopStart="12dp" app:boxBackgroundColor="#FFFFFF" android:layout_marginBottom="16dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/etExistingColor" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" android:textColor="#1A1C1E" />
                 </com.google.android.material.textfield.TextInputLayout>
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Track Size?" android:textSize="13sp" android:textStyle="bold" android:textColor="#1A1C1E" android:layout_marginBottom="8dp" />
                 <com.google.android.material.chip.ChipGroup android:id="@+id/rgTrackSize" android:layout_width="match_parent" android:layout_height="wrap_content" app:singleSelection="true" android:layout_marginBottom="16dp">
@@ -207,13 +207,13 @@
 
             <LinearLayout android:id="@+id/llDoorNotesAndPhotos" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Door notes:" android:textSize="13sp" android:textStyle="bold" android:textColor="#1A1C1E" android:layout_marginBottom="8dp" />
-                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Add door notes..." android:textColorHint="#000000" app:hintTextColor="#000000" app:boxStrokeColor="#000000" app:boxCornerRadiusBottomEnd="10dp" app:boxCornerRadiusBottomStart="10dp" app:boxCornerRadiusTopEnd="10dp" app:boxCornerRadiusTopStart="10dp" app:boxBackgroundColor="#FAFAFA" android:layout_marginBottom="16dp">
-                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/etDoorNotes" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textMultiLine" android:minLines="2" android:textColor="#000000" />
+                <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Add door notes..." android:textColorHint="#6B7280" app:hintTextColor="#CC0007" app:boxStrokeColor="@color/login_box_stroke" app:boxCornerRadiusBottomEnd="12dp" app:boxCornerRadiusBottomStart="12dp" app:boxCornerRadiusTopEnd="12dp" app:boxCornerRadiusTopStart="12dp" app:boxBackgroundColor="#FFFFFF" android:layout_marginBottom="16dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/etDoorNotes" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textMultiLine" android:minLines="2" android:textColor="#1A1C1E" />
                 </com.google.android.material.textfield.TextInputLayout>
                 <TextView android:id="@+id/tvPhotoInstruction1" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="* Upload CLEAR photos of opening from the inside" android:textSize="12sp" android:textStyle="italic" android:textColor="#CC0007" android:layout_marginBottom="4dp" />
                 <TextView android:id="@+id/tvDoorTagInstruction" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="* Upload photo of door tag with brand, model, sizing, and specs" android:textSize="12sp" android:textStyle="italic" android:textColor="#CC0007" android:layout_marginBottom="4dp" />
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="* Upload photos of any issues found on site" android:textSize="12sp" android:textStyle="italic" android:textColor="#CC0007" android:layout_marginBottom="16dp" />
-                <com.google.android.material.button.MaterialButton android:id="@+id/btnDoorPhoto" android:layout_width="match_parent" android:layout_height="48dp" android:text="ATTACH DOOR PHOTO" android:textColor="#CC0007" android:backgroundTint="#FFFFFF" app:strokeColor="#CC0007" app:strokeWidth="1dp" app:cornerRadius="10dp" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/btnDoorPhoto" android:layout_width="match_parent" android:layout_height="48dp" android:text="ATTACH DOOR PHOTO" android:textColor="#CC0007" android:backgroundTint="#FFFFFF" app:strokeColor="#CC0007" app:strokeWidth="0dp" app:cornerRadius="12dp" />
                 <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:scrollbars="none" android:overScrollMode="never">
                     <LinearLayout android:id="@+id/llDoorPhotos" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" />
                 </HorizontalScrollView>

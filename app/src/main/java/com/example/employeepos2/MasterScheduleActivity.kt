@@ -108,7 +108,7 @@ class MasterScheduleActivity : BaseActivity() {
                 layoutParams = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
-                ).apply { setMargins(0, 0, 24, 0) }
+                ).apply { setMargins(0, 0, 16, 0) }
 
                 if (techName == currentActiveFilter) {
                     setBackgroundColor(Color.parseColor("#CC0007"))
@@ -116,8 +116,8 @@ class MasterScheduleActivity : BaseActivity() {
                     strokeWidth = 0
                 } else {
                     setBackgroundColor(Color.WHITE)
-                    setTextColor(Color.parseColor("#CC0007"))
-                    strokeColor = android.content.res.ColorStateList.valueOf(Color.parseColor("#CC0007"))
+                    setTextColor(Color.parseColor("#4B5563"))
+                    strokeColor = android.content.res.ColorStateList.valueOf(Color.parseColor("#E5E7EB"))
                     strokeWidth = 3
                 }
 
@@ -140,50 +140,65 @@ class MasterScheduleActivity : BaseActivity() {
         if (jobsToShow.isEmpty()) {
             val emptyText = TextView(this).apply {
                 text = "No jobs scheduled for $filterTech today."
-                textSize = 16f
+                textSize = 14.5f
+                setTextColor(Color.parseColor("#6B7280"))
                 textAlignment = View.TEXT_ALIGNMENT_CENTER
-                setPadding(0, 50, 0, 0)
+                setPadding(0, 80, 0, 0)
             }
             container.addView(emptyText)
             return
         }
 
         jobsToShow.forEach { job ->
-            val card = MaterialCardView(this).apply {
-                layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT).apply { setMargins(0, 0, 0, 24) }
-                setCardBackgroundColor(Color.WHITE)
-                radius = 16f
-                cardElevation = 8f
-                strokeColor = Color.parseColor("#E0E0E0")
-                strokeWidth = 2
+            val dp = resources.displayMetrics.density
+            fun px(v: Int) = (v * dp).toInt()
+            val status = job.optString("status", "SCHEDULED")
+
+            // Flat row: red caps job number + status pill, big customer name, tech avatars, address.
+            val card = LinearLayout(this).apply {
+                orientation = LinearLayout.VERTICAL
+                layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+                background = androidx.core.content.ContextCompat.getDrawable(this@MasterScheduleActivity, R.drawable.bg_row_divider)
+                setPadding(px(20), px(16), px(20), px(16))
                 isClickable = true
                 isFocusable = true
             }
 
-            val innerLayout = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL; setPadding(32, 32, 32, 32) }
-            val header = TextView(this).apply { text = "#${job.optString("number", "---")} - ${job.optString("status", "SCHEDULED")}"; setTextColor(Color.parseColor("#757575")); textSize = 14f }
-            val customer = TextView(this).apply { text = job.optString("customer", "Unknown"); setTextColor(Color.BLACK); textSize = 20f; setTypeface(null, android.graphics.Typeface.BOLD); setPadding(0, 8, 0, 8) }
+            val topRow = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL; gravity = android.view.Gravity.CENTER_VERTICAL }
+            val number = TextView(this).apply {
+                text = "JOB #${job.optString("number", "---")}"
+                setTextColor(Color.parseColor("#CC0007")); textSize = 11f; letterSpacing = 0.1f
+                setTypeface(null, android.graphics.Typeface.BOLD)
+                layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
+            }
+            val pill = TextView(this).apply {
+                text = status.uppercase(); textSize = 10.5f; letterSpacing = 0.06f
+                setTypeface(null, android.graphics.Typeface.BOLD)
+                setPadding(px(11), px(4), px(11), px(4))
+                background = androidx.core.content.ContextCompat.getDrawable(this@MasterScheduleActivity, R.drawable.bg_status_badge)?.mutate()
+            }
+            StatusStyle.applyPill(pill, status)
+            topRow.addView(number); topRow.addView(pill)
 
-            val techsLayout = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL; gravity = android.view.Gravity.CENTER_VERTICAL; setPadding(0, 0, 0, 16) }
-            val techLabel = TextView(this).apply { text = "Techs: "; setTextColor(Color.parseColor("#CC0007")); textSize = 16f; setTypeface(null, android.graphics.Typeface.BOLD); setPadding(0, 0, 16, 0) }
-            techsLayout.addView(techLabel)
+            val customer = TextView(this).apply {
+                text = job.optString("customer", "Unknown"); setTextColor(Color.parseColor("#1A1C1E")); textSize = 19f
+                setTypeface(null, android.graphics.Typeface.BOLD); setPadding(0, px(8), 0, px(6))
+            }
 
+            val techsLayout = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL; gravity = android.view.Gravity.CENTER_VERTICAL; setPadding(0, 0, 0, px(6)) }
             val techsString = job.optString("techs", "Unassigned")
             if (techsString == "Unassigned") {
-                val unassignedText = TextView(this).apply { text = "Unassigned"; setTextColor(Color.DKGRAY); textSize = 14f; setTypeface(null, android.graphics.Typeface.ITALIC) }
-                techsLayout.addView(unassignedText)
+                techsLayout.addView(TextView(this).apply { text = "Unassigned"; setTextColor(Color.parseColor("#6B7280")); textSize = 13.5f; setTypeface(null, android.graphics.Typeface.ITALIC) })
             } else {
                 techsString.split(",").map { it.trim() }.forEach { techName ->
                     if (techName.isNotEmpty()) {
                         val fileName = techName.lowercase().replace(" ", "_")
                         val resId = resources.getIdentifier(fileName, "drawable", packageName)
-
                         if (resId != 0) {
-                            val sizePx = (32 * resources.displayMetrics.density).toInt()
-                            val marginPx = (8 * resources.displayMetrics.density).toInt()
+                            val sizePx = px(32)
                             val imageWrapper = MaterialCardView(this).apply {
-                                layoutParams = LinearLayout.LayoutParams(sizePx, sizePx).apply { setMargins(0, 0, marginPx, 0) }
-                                radius = sizePx / 2f; cardElevation = 0f; strokeColor = Color.parseColor("#E0E0E0"); strokeWidth = 2
+                                layoutParams = LinearLayout.LayoutParams(sizePx, sizePx).apply { setMargins(0, 0, px(8), 0) }
+                                radius = sizePx / 2f; cardElevation = 0f; strokeColor = Color.parseColor("#E5E7EB"); strokeWidth = 2
                             }
                             val imageView = ImageView(this).apply {
                                 layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
@@ -192,17 +207,16 @@ class MasterScheduleActivity : BaseActivity() {
                             imageWrapper.addView(imageView)
                             techsLayout.addView(imageWrapper)
                         } else {
-                            val nameTag = TextView(this).apply { text = techName; setTextColor(Color.DKGRAY); textSize = 14f; setTypeface(null, android.graphics.Typeface.BOLD); setPadding(0, 0, 16, 0) }
-                            techsLayout.addView(nameTag)
+                            techsLayout.addView(TextView(this).apply { text = techName; setTextColor(Color.parseColor("#4B5563")); textSize = 13.5f; setTypeface(null, android.graphics.Typeface.BOLD); setPadding(0, 0, px(12), 0) })
                         }
                     }
                 }
             }
 
-            val location = TextView(this).apply { text = job.optString("location", "No Location"); setTextColor(Color.DKGRAY); textSize = 14f }
+            val location = TextView(this).apply { text = job.optString("location", "No Location"); setTextColor(Color.parseColor("#4B5563")); textSize = 14f }
 
-            innerLayout.addView(header); innerLayout.addView(customer); innerLayout.addView(techsLayout); innerLayout.addView(location)
-            card.addView(innerLayout); container.addView(card)
+            card.addView(topRow); card.addView(customer); card.addView(techsLayout); card.addView(location)
+            container.addView(card)
 
             card.setOnClickListener {
                 val intent = Intent(this@MasterScheduleActivity, MainActivity::class.java).apply {

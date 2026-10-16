@@ -1,7 +1,6 @@
 package com.example.employeepos2
 
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,9 +30,16 @@ class JobScheduleAdapter(
 ) : ListAdapter<ScheduledJob, JobScheduleAdapter.JobViewHolder>(JobDiffCallback()) {
 
     class JobViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val tvJobType: TextView = view.findViewById(R.id.tvJobType)
         val tvJobNumber: TextView = view.findViewById(R.id.tvJobNumber)
         val tvCustomerName: TextView = view.findViewById(R.id.tvCustomerName)
         val tvStatusPill: TextView = view.findViewById(R.id.tvStatusPill)
+        val tvLocation: TextView = view.findViewById(R.id.tvLocation)
+        val rowLocation: View = view.findViewById(R.id.rowLocation)
+        val tvDescription: TextView = view.findViewById(R.id.tvDescription)
+        val tvTechs: TextView = view.findViewById(R.id.tvTechs)
+        val ivTechs: View = view.findViewById(R.id.ivTechs)
+        val btnDirections: View = view.findViewById(R.id.btnDirections)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobViewHolder {
@@ -44,33 +50,31 @@ class JobScheduleAdapter(
     override fun onBindViewHolder(holder: JobViewHolder, position: Int) {
         val job = getItem(position)
 
-        // 🔥 Dynamically switch the text on the list screen!
-        if (job.isEstimate) {
-            holder.tvJobNumber.text = "Estimate #${job.number}"
-        } else {
-            holder.tvJobNumber.text = "Job #${job.number}"
-        }
+        // Estimates are blue, jobs red (brand).
+        holder.tvJobType.text = if (job.isEstimate) "Estimate" else "Job"
+        holder.tvJobType.setTextColor((if (job.isEstimate) "#1D4ED8" else "#CC0007").toColorInt())
+        holder.tvJobNumber.text = "#${job.number}"
 
-        // 🔥 Fixed the data binding (mapped Customer to Customer)
         holder.tvCustomerName.text = job.customer
 
-        // Note: If you want to show the location on the list screen,
-        // you will need to add a tvLocation to your item_job.xml!
+        val hasAddress = StatusStyle.hasAddress(job.location)
+        holder.rowLocation.visibility = if (hasAddress) View.VISIBLE else View.GONE
+        holder.tvLocation.text = job.location.trim()
+        holder.btnDirections.visibility = if (hasAddress) View.VISIBLE else View.GONE
+        holder.btnDirections.setOnClickListener { StatusStyle.openMaps(it.context, job.location.trim()) }
+
+        val desc = job.description.trim()
+        val hasDesc = desc.isNotEmpty() && !desc.equals("No description provided.", ignoreCase = true)
+        holder.tvDescription.visibility = if (hasDesc) View.VISIBLE else View.GONE
+        holder.tvDescription.text = desc
+
+        val techs = job.techs.trim()
+        val hasTechs = techs.isNotEmpty() && !techs.equals("Unassigned", ignoreCase = true)
+        holder.tvTechs.text = if (hasTechs) techs else "Unassigned"
+        holder.ivTechs.alpha = if (hasTechs) 1f else 0.5f
 
         holder.tvStatusPill.text = job.status
-
-        val colorHex = when (job.status.uppercase()) {
-            "SCHEDULED", "SITE CHECK", "CALLBACK", "WARRANTY WORK" -> "#009E18"
-            "APPOINTMENT" -> "#00B51B"
-            "DELAYED", "NEED TO WARRANTY", "PARTIALLY COMPLETE" -> "#FFAE00"
-            "COMPLETE" -> "#9C9C9C"
-            "MANAGE PROJECT" -> "#0051FF"
-            "NEED TO ORDER" -> "#00B3FF"
-            "NEED DEPOSIT" -> "#A80000"
-            else -> "#9C9C9C"
-        }
-
-        holder.tvStatusPill.backgroundTintList = ColorStateList.valueOf(colorHex.toColorInt())
+        StatusStyle.applyPill(holder.tvStatusPill, job.status)
 
         holder.itemView.setOnClickListener { onItemClick(job) }
     }

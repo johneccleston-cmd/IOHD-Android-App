@@ -34,7 +34,7 @@ class MyDocumentsActivity : BaseActivity() {
 
         val techName = intent.getStringExtra("TECH_NAME") ?: ""
 
-        findViewById<ImageView>(R.id.btnBackFromDocs).setOnClickListener {
+        findViewById<View>(R.id.btnBackFromDocs).setOnClickListener {
             finish() // I just close this screen to go back to the profile
         }
 
@@ -81,19 +81,26 @@ class MyDocumentsActivity : BaseActivity() {
                                 val docName = doc.getString("name")
                                 val docUrl = doc.getString("url")
 
-                                val btn = MaterialButton(this@MyDocumentsActivity).apply {
-                                    layoutParams = LinearLayout.LayoutParams(
-                                        LinearLayout.LayoutParams.MATCH_PARENT,
-                                        180 // 180px tall button
-                                    ).apply { setMargins(0, 0, 0, 24) }
-
-                                    text = docName
-                                    isAllCaps = false
-                                    setBackgroundColor(android.graphics.Color.WHITE)
-                                    setTextColor(android.graphics.Color.parseColor("#CC0007"))
-                                    strokeColor = android.content.res.ColorStateList.valueOf(android.graphics.Color.parseColor("#CC0007"))
-                                    strokeWidth = 2
-                                    cornerRadius = 16
+                                val dp = resources.displayMetrics.density
+                                val btn = LinearLayout(this@MyDocumentsActivity).apply {
+                                    orientation = LinearLayout.HORIZONTAL
+                                    gravity = android.view.Gravity.CENTER_VERTICAL
+                                    layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+                                    background = androidx.core.content.ContextCompat.getDrawable(this@MyDocumentsActivity, R.drawable.bg_row_divider)
+                                    setPadding((20 * dp).toInt(), (18 * dp).toInt(), (20 * dp).toInt(), (18 * dp).toInt())
+                                    isClickable = true
+                                    isFocusable = true
+                                    addView(android.widget.TextView(this@MyDocumentsActivity).apply {
+                                        text = docName
+                                        textSize = 16f
+                                        setTextColor(android.graphics.Color.parseColor("#1A1C1E"))
+                                        setTypeface(null, android.graphics.Typeface.BOLD)
+                                        layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
+                                    })
+                                    addView(ImageView(this@MyDocumentsActivity).apply {
+                                        setImageResource(R.drawable.ic_job_chevron)
+                                        layoutParams = LinearLayout.LayoutParams((20 * dp).toInt(), (20 * dp).toInt())
+                                    })
 
                                     // When I click it, I open the PDF/Doc in the browser or Drive app!
                                     setOnClickListener {

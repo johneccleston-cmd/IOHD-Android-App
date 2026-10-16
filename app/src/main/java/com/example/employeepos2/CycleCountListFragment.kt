@@ -15,6 +15,7 @@ import android.widget.*
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -41,6 +42,7 @@ class CycleCountListFragment : Fragment(R.layout.fragment_cycle_count_list) {
     private val masterZoneItems = mutableListOf<ZoneCountItem>()
     private val filteredZoneItems = mutableListOf<ZoneCountItem>()
     private var selectedCategory = "ALL"
+    private lateinit var draftStore: CycleCountDraftViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -70,6 +72,7 @@ class CycleCountListFragment : Fragment(R.layout.fragment_cycle_count_list) {
         }
 
         zoneName = arguments?.getString("ZONE_NAME") ?: "Zone"
+        draftStore = ViewModelProvider(requireActivity())[CycleCountDraftViewModel::class.java]
         view.findViewById<TextView>(R.id.tvZoneTitle).text = "$zoneName Count"
 
         val rv = view.findViewById<RecyclerView>(R.id.rvCountItems)
@@ -104,6 +107,12 @@ class CycleCountListFragment : Fragment(R.layout.fragment_cycle_count_list) {
         }
 
         fetchInventoryForZone()
+    }
+
+    // Keep unsubmitted counts when the screen is rotated or leaves the foreground
+    override fun onDestroyView() {
+        if (::draftStore.isInitialized) draftStore.save(zoneName, masterZoneItems)
+        super.onDestroyView()
     }
 
     // 🔥 LIVE PROGRESS CALCULATOR
@@ -198,17 +207,19 @@ class CycleCountListFragment : Fragment(R.layout.fragment_cycle_count_list) {
     }
 
     private fun markItemAsNonInventory(item: ZoneCountItem, position: Int) {
-        val prefs = requireActivity().getSharedPreferences("CycleCountPrefs", Context.MODE_PRIVATE)
-        val nonInventorySet = prefs.getStringSet("NonInventoryItems", mutableSetOf())?.toMutableSet() ?: mutableSetOf()
-
-        nonInventorySet.add(item.name)
-        prefs.edit().putStringSet("NonInventoryItems", nonInventorySet).apply()
-
-        masterZoneItems.removeAll { it.name == item.name }
-        adapter.removeItemAt(position)
-        updateProgress() // 🔥 RECALCULATE PROGRESS
-
-        Toast.makeText(requireContext(), "'${item.name}' hidden from cycle counts.", Toast.LENGTH_SHORT).show()
+        viewLifecycleOwner.lifecycleScope.launch {
+            val ok = withContext(Dispatchers.IO) { CycleCountApi.markNonInventory(item.name) }
+            if (!isAdded) return@launch
+            if (!ok) {
+                adapter.notifyItemChanged(position)
+                Toast.makeText(requireContext(), "Couldn't hide '${item.name}'. Check connection.", Toast.LENGTH_LONG).show()
+                return@launch
+            }
+            masterZoneItems.removeAll { it.name == item.name }
+            adapter.removeItemAt(position)
+            updateProgress() // 🔥 RECALCULATE PROGRESS
+            Toast.makeText(requireContext(), "'${item.name}' hidden from cycle counts.", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun fetchInventoryForZone() {
@@ -277,9 +288,23 @@ class CycleCountListFragment : Fragment(R.layout.fragment_cycle_count_list) {
                         else -> emptyList()
                     }
 
-                    val prefs = requireActivity().getSharedPreferences("CycleCountPrefs", Context.MODE_PRIVATE)
-                    val countedSet = prefs.getStringSet("CountedItems_$zoneName", emptySet()) ?: emptySet()
-                    val nonInventorySet = prefs.getStringSet("NonInventoryItems", emptySet()) ?: emptySet()
+                    // Counted items and hidden items are shared across devices (backend), not stored on this phone
+                    val status = CycleCountApi.fetchStatus()
+                    if (status == null) {
+                        activity?.runOnUiThread {
+                            pb?.visibility = View.GONE
+                            Toast.makeText(requireContext(), "Couldn't load shared count progress", Toast.LENGTH_LONG).show()
+                        }
+                        return
+                    }
+                    val countedSet = mutableSetOf<String>()
+                    CycleCountApi.zoneObject(status, zoneName)?.optJSONArray("countedItems")?.let { arr ->
+                        for (i in 0 until arr.length()) countedSet.add(arr.getString(i))
+                    }
+                    val nonInventorySet = mutableSetOf<String>()
+                    status.optJSONArray("nonInventory")?.let { arr ->
+                        for (i in 0 until arr.length()) nonInventorySet.add(arr.getString(i))
+                    }
 
                     masterZoneItems.clear()
 
@@ -298,6 +323,7 @@ class CycleCountListFragment : Fragment(R.layout.fragment_cycle_count_list) {
                         isRightZone && isNotCountedYet && isNotNonInventory && !isExcludedInZone
                     }.sortedBy { it.category }
 
+                    draftStore.restore(zoneName, zoneItems)
                     masterZoneItems.addAll(zoneItems)
 
                     activity?.runOnUiThread {
@@ -336,7 +362,7 @@ class CycleCountListFragment : Fragment(R.layout.fragment_cycle_count_list) {
                 text = catName
                 isAllCaps = true
                 cornerRadius = 50
-                layoutParams = LinearLayout.LayoutParams(-2, -2).apply { setMargins(0, 0, 24, 0) }
+                layoutParams = LinearLayout.LayoutParams(-2, -2).apply { setMargins(0, 0, 16, 0) }
 
                 if (catName == selectedCategory) {
                     setBackgroundColor(Color.parseColor("#CC0007"))
@@ -344,8 +370,8 @@ class CycleCountListFragment : Fragment(R.layout.fragment_cycle_count_list) {
                     strokeWidth = 0
                 } else {
                     setBackgroundColor(Color.WHITE)
-                    setTextColor(Color.BLACK)
-                    strokeColor = ColorStateList.valueOf(Color.parseColor("#CC0007"))
+                    setTextColor(Color.parseColor("#4B5563"))
+                    strokeColor = ColorStateList.valueOf(Color.parseColor("#E5E7EB"))
                     strokeWidth = 3
                 }
 
@@ -390,8 +416,7 @@ class CycleCountListFragment : Fragment(R.layout.fragment_cycle_count_list) {
         btnSubmit?.text = "UPDATING SHEET..."
 
         lifecycleScope.launch(Dispatchers.IO) {
-            val prefs = requireActivity().getSharedPreferences("CycleCountPrefs", Context.MODE_PRIVATE)
-            val countedSet = prefs.getStringSet("CountedItems_$zoneName", mutableSetOf())?.toMutableSet() ?: mutableSetOf()
+            val isComplete = masterZoneItems.size <= countedItems.size
 
             val itemsArray = JSONArray()
             for (item in countedItems) {
@@ -410,6 +435,7 @@ class CycleCountListFragment : Fragment(R.layout.fragment_cycle_count_list) {
                 put("date", currentDate)     // Destined for I5
                 put("zone", zoneName)        // Destined for I9
                 put("items", itemsArray)
+                put("isComplete", isComplete) // backend stores zone status for all devices
             }
 
             val jsonMediaType = "application/json; charset=utf-8".toMediaType()
@@ -424,20 +450,8 @@ class CycleCountListFragment : Fragment(R.layout.fragment_cycle_count_list) {
             try {
                 val response = ApiClient.client.newCall(request).execute()
                 if (response.isSuccessful) {
-                    for (item in countedItems) {
-                        countedSet.add(item.name)
-                    }
-
-                    val isComplete = masterZoneItems.size <= countedItems.size
-                    val statusText = if (isComplete) "Complete" else "Incomplete"
-
-                    prefs.edit()
-                        .putStringSet("CountedItems_$zoneName", countedSet)
-                        .putString("LAST_DATE_$zoneName", currentDate)
-                        .putString("LAST_STATUS_$zoneName", statusText)
-                        .apply()
-
                     withContext(Dispatchers.Main) {
+                        draftStore.clear(zoneName, countedItems.map { it.name })
                         Toast.makeText(requireContext(), "Successfully updated ${countedItems.size} items!", Toast.LENGTH_LONG).show()
                         fetchInventoryForZone()
                     }

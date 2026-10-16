@@ -2,7 +2,15 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.EmployeePOS2" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">#CC0007</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorPrimaryContainer">#FEE2E2</item>
+        <item name="colorOnPrimaryContainer">#CC0007</item>
+        <item name="colorSecondary">#CC0007</item>
+        <item name="colorSecondaryContainer">#FEE2E2</item>
+        <item name="colorOnSecondaryContainer">#CC0007</item>
+        <item name="colorSurface">#FFFFFF</item>
+        <item name="android:windowBackground">#FFFFFF</item>
     </style>
 
     <style name="Theme.EmployeePOS2" parent="Base.Theme.EmployeePOS2" />
@@ -38,18 +46,18 @@
         <item name="android:layout_columnWeight">1</item>
         <item name="android:orientation">vertical</item>
         <item name="android:gravity">center_horizontal</item>
-        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:layout_marginBottom">26dp</item>
     </style>
 
     <style name="BadgeCircleFrame">
-        <item name="android:layout_width">56dp</item>
-        <item name="android:layout_height">56dp</item>
-        <item name="android:background">@drawable/bg_avatar_ring</item>
+        <item name="android:layout_width">74dp</item>
+        <item name="android:layout_height">74dp</item>
+        <item name="android:background">@drawable/bg_badge_square</item>
     </style>
 
     <style name="BadgeIconNew">
-        <item name="android:layout_width">32dp</item>
-        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
         <item name="android:layout_gravity">center</item>
     </style>
 
@@ -86,4 +94,33 @@
     </style>
 
 
+
+    <style name="App.NavIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">#FEE2E2</item>
+        <item name="android:width">56dp</item>
+        <item name="android:height">30dp</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Full</item>
+    </style>
+
+    <style name="App.NavLabel" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="App.Field" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundColor">#FFFFFF</item>
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
+        <item name="boxStrokeColor">@color/login_box_stroke</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">1.6dp</item>
+        <item name="hintEnabled">false</item>
+    </style>
+
+    <style name="RoundedSquare">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
 </resources>

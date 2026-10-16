@@ -9,13 +9,10 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.graphics.toColorInt
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.card.MaterialCardView
 
 @SuppressLint("SetTextI18n")
 class JobDetailsFragment : Fragment(R.layout.fragment_job_details) {
@@ -78,7 +75,7 @@ class JobDetailsFragment : Fragment(R.layout.fragment_job_details) {
             }
         }
 
-        val notesCard = view.findViewById<MaterialCardView>(R.id.cardJobNotes)
+        val notesCard = view.findViewById<View>(R.id.cardJobNotes)
         val tvNotes = view.findViewById<TextView>(R.id.tvJobNotes)
 
         if (!notes.isNullOrBlank()) {
@@ -90,27 +87,17 @@ class JobDetailsFragment : Fragment(R.layout.fragment_job_details) {
 
         val tvStatusBadge = view.findViewById<TextView>(R.id.tvDetailsStatusBadge)
         tvStatusBadge.text = status.uppercase()
-        val colorHex = when (status.uppercase()) {
-            "SCHEDULED", "SITE CHECK", "CALLBACK", "WARRANTY WORK" -> "#009E18"
-            "APPOINTMENT"                                           -> "#00B51B"
-            "DELAYED", "NEED TO WARRANTY", "PARTIALLY COMPLETE"    -> "#FFAE00"
-            "COMPLETE"                                              -> "#9C9C9C"
-            "MANAGE PROJECT"                                        -> "#0051FF"
-            "NEED TO ORDER"                                         -> "#00B3FF"
-            "NEED DEPOSIT"                                          -> "#A80000"
-            else                                                    -> "#9C9C9C"
-        }
-        tvStatusBadge.backgroundTintList = ColorStateList.valueOf(colorHex.toColorInt())
+        StatusStyle.applyPill(tvStatusBadge, status)
 
         val tvLocation = view.findViewById<TextView>(R.id.tvDetailsLocation)
-        tvLocation.text = location
-        if (location.isNotEmpty()) {
-            tvLocation.setOnClickListener {
-                val mapUri = "geo:0,0?q=${android.net.Uri.encode(location)}".toUri()
-                try { startActivity(Intent(Intent.ACTION_VIEW, mapUri)) }
-                catch (e: Exception) { Toast.makeText(requireContext(), "No maps app found", Toast.LENGTH_SHORT).show() }
-            }
+        val hasAddress = StatusStyle.hasAddress(location)
+        val openMaps = View.OnClickListener { StatusStyle.openMaps(requireContext(), location.trim()) }
+        tvLocation.text = if (hasAddress) location.trim() else "No address provided"
+        view.findViewById<View>(R.id.btnDirections).apply {
+            visibility = if (hasAddress) View.VISIBLE else View.GONE
+            setOnClickListener(openMaps)
         }
+        if (hasAddress) view.findViewById<View>(R.id.rowDetailsLocation).setOnClickListener(openMaps)
 
         view.findViewById<MaterialButton>(R.id.btnStartSiteCheck).setOnClickListener {
             val intent = Intent(requireContext(), SiteCheckMenuActivity::class.java).apply {

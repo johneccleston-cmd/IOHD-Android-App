@@ -26,6 +26,9 @@ class WarehouseTechListFragment : Fragment(R.layout.fragment_tech_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        view.findViewById<View>(R.id.btnBack)?.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
         rvTechs = view.findViewById(R.id.rvTechs)
         loaderTechs = view.findViewById(R.id.loaderTechs)
 
@@ -124,6 +127,16 @@ class TechListAdapter(private val onTechClick: (String) -> Unit) : RecyclerView.
         val tech = techList[position]
         holder.tvTechName.text = tech.name
 
+        val ctx = holder.itemView.context
+        holder.tvInitials.text = tech.name.split(" ").filter { it.isNotBlank() }.take(2).joinToString("") { it.first().uppercase() }
+        val resId = ctx.resources.getIdentifier(tech.name.lowercase().trim().replace(" ", "_"), "drawable", ctx.packageName)
+        if (resId != 0) {
+            holder.ivAvatar.setImageResource(resId)
+            holder.ivAvatar.visibility = View.VISIBLE
+        } else {
+            holder.ivAvatar.visibility = View.GONE
+        }
+
         // 🔥 WAREHOUSE MAGIC: Gray out the entire row if they have no items
         if (tech.hasItems) {
             holder.itemView.alpha = 1.0f // Normal full color
@@ -138,5 +151,7 @@ class TechListAdapter(private val onTechClick: (String) -> Unit) : RecyclerView.
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvTechName: TextView = view.findViewById(R.id.tvTechName)
+        val tvInitials: TextView = view.findViewById(R.id.tvTechInitials)
+        val ivAvatar: com.google.android.material.imageview.ShapeableImageView = view.findViewById(R.id.ivTechAvatar)
     }
 }

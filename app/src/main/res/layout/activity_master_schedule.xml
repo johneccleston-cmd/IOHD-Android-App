@@ -1,90 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F9FC"
+    android:background="#FFFFFF"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:elevation="4dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="16dp">
-
-        <FrameLayout
-            android:id="@+id/btnBack"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:background="@drawable/bg_icon_red"
-            android:clickable="true"
-            android:focusable="true">
-
-            <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_arrow_back"
-                app:tint="#CC0007" />
-        </FrameLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="Company Schedule"
-            android:textColor="#000000"
-            android:textSize="22sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none"
-        android:paddingTop="16dp"
-        android:paddingHorizontal="16dp"
-        android:clipToPadding="false">
-
         <LinearLayout
-            android:id="@+id/llTechFilters"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" />
-    </HorizontalScrollView>
-
-    <TextView
-        android:id="@+id/tvMasterScheduleDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="4dp"
-        android:text="Monday, April 27"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="#1A1C1E"
-        android:letterSpacing="0.01" />
-
-    <ProgressBar
-        android:id="@+id/masterLoader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
-
-        <LinearLayout
-            android:id="@+id/llMasterScheduleList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="18dp">
+
+            <FrameLayout
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/bg_icon_red_soft"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="Back"
+                    android:src="@drawable/ic_arrow_back"
+                    app:tint="#CC0007" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.1"
+                    android:text="COMPANY"
+                    android:textColor="#CC0007"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Company schedule"
+                    android:textColor="#1A1C1E"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingHorizontal="20dp"
+            android:paddingBottom="12dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/llTechFilters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+        </HorizontalScrollView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E5E7EB" />
+
+        <TextView
+            android:id="@+id/tvMasterScheduleDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F1F5F9"
+            android:letterSpacing="0.05"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="12dp"
+            android:text="Monday, April 27"
+            android:textColor="#1A1C1E"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E5E7EB" />
+
+        <ProgressBar
+            android:id="@+id/masterLoader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
+            android:indeterminateTint="#CC0007" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/llMasterScheduleList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+
 </LinearLayout>

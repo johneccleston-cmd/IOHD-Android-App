@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
@@ -57,6 +58,8 @@ class LoginActivity : BaseActivity() {
     private lateinit var pinInput: TextInputEditText
     private lateinit var loginBtn: MaterialButton
     private lateinit var loader: ProgressBar
+    private lateinit var errorBox: View
+    private lateinit var errorText: TextView
 
     private val client: OkHttpClient by lazy {
         OkHttpClient.Builder()
@@ -120,6 +123,22 @@ class LoginActivity : BaseActivity() {
         pinInput = findViewById(R.id.loginPin)
         loginBtn = findViewById(R.id.btnLogin)
         loader = findViewById(R.id.loginLoader)
+        errorBox = findViewById(R.id.loginErrorBox)
+        errorText = findViewById(R.id.loginErrorText)
+
+        val clearOnType = object : android.text.TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { clearError() }
+            override fun afterTextChanged(s: android.text.Editable?) {}
+        }
+        usernameInput.addTextChangedListener(clearOnType)
+        pinInput.addTextChangedListener(clearOnType)
+        pinInput.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == android.view.inputmethod.EditorInfo.IME_ACTION_DONE) {
+                loginBtn.performClick()
+                true
+            } else false
+        }
 
         val savedPin = prefs.getString(PrefKeys.SAVED_PIN, "")
         val savedUsername = prefs.getString(PrefKeys.SAVED_USERNAME, "")
@@ -179,14 +198,11 @@ class LoginActivity : BaseActivity() {
             val username = usernameInput.text.toString().trim()
             val pin = pinInput.text.toString().trim()
 
-            if (username.isEmpty()) {
-                usernameInput.error = "Username Required"
+            if (username.isEmpty() || pin.isEmpty()) {
+                showError("Enter your username and PIN.")
                 return@setOnClickListener
             }
-            if (pin.isEmpty()) {
-                pinInput.error = "PIN Required"
-                return@setOnClickListener
-            }
+            clearError()
 
             // Attempt biometric login. If hardware fails, onAuthenticationError catches it and logs them in normally!
             biometricPrompt.authenticate(promptInfo)
@@ -226,7 +242,7 @@ class LoginActivity : BaseActivity() {
                         launchMain()
                     } else {
                         loginBtn.isEnabled = true
-                        Toast.makeText(this@LoginActivity, "No internet. First login requires connection.", Toast.LENGTH_LONG).show()
+                        showError("No internet. First login requires a connection.")
                     }
                 }
             }
@@ -242,12 +258,12 @@ class LoginActivity : BaseActivity() {
                                 if (it.code == 429) {
                                     try {
                                         val errorJson = JSONObject(body)
-                                        Toast.makeText(this@LoginActivity, errorJson.optString("error", "Too many attempts. Please try again later."), Toast.LENGTH_LONG).show()
+                                        showError(errorJson.optString("error", "Too many attempts. Please try again later."))
                                     } catch (e: Exception) {
-                                        Toast.makeText(this@LoginActivity, "Too many login attempts. Please try again in 15 minutes.", Toast.LENGTH_LONG).show()
+                                        showError("Too many login attempts. Please try again in 15 minutes.")
                                     }
                                 } else {
-                                    Toast.makeText(this@LoginActivity, "Server Error: ${it.code}", Toast.LENGTH_SHORT).show()
+                                    showError("Server error (${it.code}). Please try again.")
                                 }
                                 return@runOnUiThread
                             }
@@ -279,16 +295,27 @@ class LoginActivity : BaseActivity() {
                                 }
                             } else {
                                 loginBtn.isEnabled = true
-                                Toast.makeText(this@LoginActivity, json.optString("error", "Invalid Credentials"), Toast.LENGTH_SHORT).show()
+                                showError(json.optString("error", "Invalid username or PIN."))
+                                pinInput.text?.clear()
+                                pinInput.requestFocus()
                             }
                         } catch (e: Exception) {
                             loginBtn.isEnabled = true
-                            Toast.makeText(this@LoginActivity, "Data Error", Toast.LENGTH_SHORT).show()
+                            showError("Unexpected response from the server.")
                         }
                     }
                 }
             }
         })
+    }
+
+    private fun showError(message: String) {
+        errorText.text = message
+        errorBox.visibility = View.VISIBLE
+    }
+
+    private fun clearError() {
+        if (errorBox.visibility != View.GONE) errorBox.visibility = View.GONE
     }
 
     private fun showMaterialPinChangeDialog(oldPin: String, assignedUsername: String) {

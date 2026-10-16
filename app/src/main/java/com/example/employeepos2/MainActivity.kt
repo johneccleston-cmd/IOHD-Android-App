@@ -136,9 +136,15 @@ class MainActivity : BaseActivity() {
         val role = prefs.getString(PREF_ROLE, "INSTALLER") ?: "INSTALLER"
 
         navView.menu.findItem(R.id.nav_jobs)?.isVisible = canCollect
-        navView.menu.findItem(R.id.nav_leaderboard)?.isVisible = role.uppercase() != "OFFICE"
+        navView.menu.findItem(R.id.nav_leaderboard)?.isVisible = true
 
         navView.setOnItemSelectedListener { item ->
+            navView.findViewById<View>(item.itemId)?.let { tab ->
+                tab.animate().cancel()
+                tab.scaleX = 0.86f; tab.scaleY = 0.86f
+                tab.animate().scaleX(1f).scaleY(1f).setDuration(320)
+                    .setInterpolator(android.view.animation.OvershootInterpolator(3f)).start()
+            }
             when (item.itemId) {
                 R.id.nav_jobs -> { loadRootFragment(PaymentFragment()); true }
                 R.id.nav_inventory -> { loadRootFragment(InventoryMenuFragment()); true }

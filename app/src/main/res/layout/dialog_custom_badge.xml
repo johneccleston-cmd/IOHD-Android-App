@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     app:cardBackgroundColor="#FFFFFF"
-    app:cardCornerRadius="24dp"
-    app:cardElevation="8dp">
+    app:cardCornerRadius="20dp"
+    app:cardElevation="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,8 +18,8 @@
 
         <ImageView
             android:id="@+id/dialogBadgeIcon"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
             android:layout_marginBottom="16dp"
             android:scaleType="fitCenter" />
 
@@ -27,18 +27,18 @@
             android:id="@+id/dialogBadgeStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="6dp"
             android:letterSpacing="0.1"
-            android:textSize="12sp"
+            android:textSize="11.5sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/dialogBadgeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="10dp"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="#1A1C1E"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -46,22 +46,23 @@
             android:id="@+id/dialogBadgeDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="22dp"
             android:lineSpacingExtra="4dp"
             android:textAlignment="center"
-            android:textColor="#555555"
-            android:textSize="15sp" />
+            android:textColor="#4B5563"
+            android:textSize="14.5sp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDialogClose"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="52dp"
             android:text="Awesome"
+            android:textAllCaps="false"
             android:textColor="#FFFFFF"
-            android:textSize="16sp"
+            android:textSize="15.5sp"
             android:textStyle="bold"
             app:backgroundTint="#CC0007"
-            app:cornerRadius="12dp" />
-
+            app:cornerRadius="14dp"
+            app:elevation="0dp" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

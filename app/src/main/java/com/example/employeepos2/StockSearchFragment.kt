@@ -32,8 +32,7 @@ class StockSearchFragment : Fragment(R.layout.fragment_stock_search) {
         val btnBack   = view.findViewById<FrameLayout>(R.id.btnBack)
 
         // Ensure Search text is Black
-        etSearch.setTextColor(Color.BLACK)
-        etSearch.setHintTextColor(Color.LTGRAY)
+        
 
         btnBack?.setOnClickListener {
             (requireActivity() as MainActivity).loadFragment(InventoryMenuFragment())
@@ -114,7 +113,7 @@ class StockSearchFragment : Fragment(R.layout.fragment_stock_search) {
                 text = catName
                 isAllCaps = true
                 cornerRadius = 50
-                layoutParams = LinearLayout.LayoutParams(-2, -2).apply { setMargins(0, 0, 24, 0) }
+                layoutParams = LinearLayout.LayoutParams(-2, -2).apply { setMargins(0, 0, 16, 0) }
 
                 if (catName == selectedCategory) {
                     setBackgroundColor(Color.parseColor("#CC0007"))
@@ -122,8 +121,8 @@ class StockSearchFragment : Fragment(R.layout.fragment_stock_search) {
                     strokeWidth = 0
                 } else {
                     setBackgroundColor(Color.WHITE)
-                    setTextColor(Color.BLACK)
-                    strokeColor = ColorStateList.valueOf(Color.parseColor("#CC0007"))
+                    setTextColor(Color.parseColor("#4B5563"))
+                    strokeColor = ColorStateList.valueOf(Color.parseColor("#E5E7EB"))
                     strokeWidth = 3
                 }
 

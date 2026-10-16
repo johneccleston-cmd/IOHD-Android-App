@@ -1,86 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="0dp"
-    app:strokeWidth="1dp"
-    app:strokeColor="#E5E7EB"
-    app:cardBackgroundColor="#FFFFFF">
+    android:background="@drawable/bg_row_divider"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="14dp">
+
+    <FrameLayout
+        android:layout_width="76dp"
+        android:layout_height="76dp">
+
+        <TextView
+            android:id="@+id/tvInitials"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:background="@drawable/bg_avatar_square"
+            android:gravity="center"
+            android:textColor="#CC0007"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            app:shapeAppearanceOverlay="@style/RoundedSquare" />
+    </FrameLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_marginStart="16dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/techNameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tech Name"
+            android:textColor="#1A1C1E"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/techRoleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
             android:text="Role"
-            android:textSize="13sp"
-            android:textColor="#757575"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="12dp" />
+            android:textColor="#6B7280"
+            android:textSize="13.5sp" />
 
         <LinearLayout
+            android:id="@+id/badgeRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/badgeLead"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="LEAD TECH"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF"
-                android:background="#CC0007"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="4dp"
-                android:layout_marginEnd="6dp"
-                android:visibility="gone" />
-
-            <TextView
+            <ImageView
                 android:id="@+id/badge5Star"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="⭐ 5-STAR PRO"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                android:textColor="#000000"
-                android:background="#FFD700"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="4dp"
-                android:layout_marginEnd="6dp"
-                android:visibility="gone" />
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:contentDescription="badge5Star"
+                android:src="@drawable/ic_badge_star"
+                android:layout_marginEnd="8dp" />
 
-            <TextView
+            <ImageView
                 android:id="@+id/badgeNoRecalls"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="🛡️ 0 RECALLS"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF"
-                android:background="#1A7A4A"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="4dp"
-                android:visibility="gone" />
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:contentDescription="badgeNoRecalls"
+                android:src="@drawable/ic_badge_shield"
+                android:layout_marginEnd="8dp" />
+
+            <ImageView
+                android:id="@+id/badgeLead"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:contentDescription="badgeLead"
+                android:src="@drawable/ic_badge_crown"
+                android:layout_marginEnd="8dp" />
+
+            <ImageView
+                android:id="@+id/badgeTenure"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:contentDescription="badgeTenure"
+                android:src="@drawable/ic_badge_1" />
+
         </LinearLayout>
     </LinearLayout>
-</com.google.android.material.card.MaterialCardView>
+</LinearLayout>

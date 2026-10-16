@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/bg_row_divider"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#FFFFFF">
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="14dp">
 
     <TextView
         android:id="@+id/tvPartName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#000000"
-        android:textSize="18sp"
+        android:textColor="#1A1C1E"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvPartQty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textSize="16sp" />
-
+        android:layout_marginTop="3dp"
+        android:textSize="13.5sp"
+        android:textStyle="bold" />
 </LinearLayout>

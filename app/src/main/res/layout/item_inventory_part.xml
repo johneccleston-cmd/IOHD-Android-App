@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingVertical="12dp"
-    android:paddingHorizontal="4dp"
-    android:background="#FFFFFF">
+    android:paddingHorizontal="0dp"
+    android:background="@drawable/bg_row_divider">
 
     <CheckBox
         android:id="@+id/cbPicked"
@@ -24,7 +24,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="12dp"
         android:text="Part Name"
-        android:textColor="#111827"
+        android:textColor="#1A1C1E"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/cbPicked"

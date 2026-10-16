@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F9FC">
+    android:background="#FFFFFF">
 
     <FrameLayout
         android:id="@+id/fragment_container_v2"
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_alignParentBottom="true"
-        android:background="#FFFFFF"
+        android:background="@drawable/bg_nav_bar"
         app:itemIconTint="@color/nav_selector_v2"
         app:itemTextColor="@color/nav_selector_v2"
         app:menu="@menu/bottom_nav_menu_v2"

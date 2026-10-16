@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Flat full-page home: sections separated by hairlines, no cards. -->
 <androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F2F4F7"
+    android:background="#FFFFFF"
     android:fillViewport="true">
 
     <LinearLayout
@@ -13,172 +13,182 @@
         android:orientation="vertical"
         android:paddingBottom="24dp">
 
-        <com.google.android.material.card.MaterialCardView
+        <!-- Greeting + weather -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
-            android:layout_marginTop="16dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="0dp"
-            app:strokeWidth="1dp"
-            app:strokeColor="#E5E7EB"
-            app:cardBackgroundColor="#FFFFFF">
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="18dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="14dp"
-                android:gravity="center_vertical">
-
-                <FrameLayout
-                    android:layout_width="52dp"
-                    android:layout_height="52dp"
-                    android:background="@drawable/bg_weather_icon_pill">
-
-                    <ImageView
-                        android:id="@+id/ivWeatherIcon"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_launcher_foreground" />
-                </FrameLayout>
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_marginStart="12dp">
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/tvWeatherTemp"
+                        android:id="@+id/tvDateLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="--°F"
-                        android:textSize="26sp"
-                        android:textStyle="bold"
-                        android:textColor="#1A1C1E" />
+                        android:letterSpacing="0.1"
+                        android:textAllCaps="true"
+                        android:textColor="#CC0007"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/welcomeText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Good Morning"
+                        android:textColor="#1A1C1E"
+                        android:textSize="28sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Weather: icon over temperature, outlook and high/low underneath -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/ivWeatherIcon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_launcher_foreground" />
+
+                        <TextView
+                            android:id="@+id/tvWeatherTemp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="2dp"
+                            android:text="--°F"
+                            android:textColor="#1A1C1E"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvWeatherHigh"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="H: --°"
+                            android:textColor="#1A1C1E"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvWeatherLow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="L: --°"
+                            android:textColor="#6B7280"
+                            android:textSize="12sp" />
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/tvWeatherOutlook"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:letterSpacing="0.04"
+                        android:maxWidth="130dp"
+                        android:maxLines="1"
+                        android:ellipsize="end"
                         android:text="Loading..."
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:letterSpacing="0.08"
                         android:textAllCaps="true"
-                        android:textColor="#6B7280" />
+                        android:textColor="#6B7280"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="end"
-                    android:layout_marginEnd="4dp">
-
-                    <TextView
-                        android:id="@+id/tvWeatherHigh"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="H: --°"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:textColor="#374151" />
-
-                    <TextView
-                        android:id="@+id/tvWeatherLow"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="L: --°"
-                        android:textSize="12sp"
-                        android:textColor="#9CA3AF" />
-                </LinearLayout>
-
             </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp">
-
-            <TextView
-                android:id="@+id/welcomeText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Good Morning"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:textColor="#1A1C1E" />
 
             <TextView
                 android:id="@+id/tvDailySummary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Analyzing your schedule..."
-                android:textSize="13sp"
-                android:textColor="#6B7280"
-                android:lineSpacingMultiplier="1.5"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:lineSpacingMultiplier="1.35"
                 android:maxLines="5"
-                android:ellipsize="end" />
+                android:text="Analyzing your schedule..."
+                android:textColor="#4B5563"
+                android:textSize="14.5sp" />
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E5E7EB" />
+
+        <!-- Today's earnings (hidden for management in code) -->
         <LinearLayout
             android:id="@+id/btnEarningsPanel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginHorizontal="12dp"
-            android:layout_marginTop="14dp"
-            android:padding="16dp"
-            android:background="@drawable/bg_earnings_integrated"
-            android:foreground="?attr/selectableItemBackground"
+            android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:elevation="0dp">
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="14dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="4dp">
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:letterSpacing="0.1"
+                    android:text="TODAY'S EARNINGS"
+                    android:textColor="#9CA3AF"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="TODAY'S EARNINGS"
-                        android:textColor="#9CA3AF"
-                        android:textSize="10sp"
-                        android:textStyle="bold"
-                        android:letterSpacing="0.1"
-                        android:textAllCaps="true" />
-
-                    <TextView
-                        android:id="@+id/tvEarningsTotal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="$0.00"
-                        android:textColor="#1A1C1E"
-                        android:textSize="32sp"
-                        android:textStyle="bold"
-                        android:layout_marginTop="2dp" />
-                </LinearLayout>
-
+                <TextView
+                    android:id="@+id/tvEarningsTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="$0.00"
+                    android:textColor="#1A1C1E"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_job_chevron" />
         </LinearLayout>
 
         <LinearLayout
@@ -186,30 +196,68 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginHorizontal="12dp"
-            android:layout_marginTop="12dp"
             android:visibility="gone" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <!-- Schedule header, set on the page-slate band so it reads as a section break -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="8dp"
-            android:text="TODAY'S SCHEDULE"
-            android:textSize="11sp"
-            android:textStyle="bold"
-            android:textColor="#9CA3AF"
-            android:letterSpacing="0.1"
-            android:textAllCaps="true" />
+            android:background="#F1F5F9"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.1"
+                android:text="TODAY’S SCHEDULE"
+                android:textColor="#4B5563"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvScheduleCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_count_pill"
+                android:gravity="center"
+                android:minWidth="22dp"
+                android:paddingHorizontal="7dp"
+                android:paddingVertical="2dp"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E5E7EB" />
+
+        <TextView
+            android:id="@+id/tvScheduleEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.3"
+            android:padding="36dp"
+            android:text="Nothing scheduled for you today.\nEnjoy the quiet."
+            android:textColor="#6B7280"
+            android:textSize="14sp"
+            android:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvSchedule"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="12dp"
+            android:background="#FFFFFF"
             android:clipToPadding="false"
-            android:nestedScrollingEnabled="false" />
+            android:nestedScrollingEnabled="false"
+            android:paddingTop="8dp" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- New charge form: flat full page, sections divided by hairlines. -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4F5F7"
+    android:background="#FFFFFF"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:orientation="vertical">
 
-        <!-- Header Row: Title + Status Pill -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="24dp">
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
 
-            <!-- Title block -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -31,302 +30,243 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:letterSpacing="0.1"
                     android:text="POINT OF SALE"
+                    android:textColor="#CC0007"
                     android:textSize="11sp"
-                    android:letterSpacing="0.10"
-                    android:textColor="#888780"
-                    android:textStyle="normal"
-                    android:layout_marginBottom="3dp" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="New Charge"
-                    android:textSize="22sp"
-                    android:textColor="#1A1A1A"
-                    android:textStyle="normal" />
-            </LinearLayout>
-
-            <!-- Status pill -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="36dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:background="@drawable/bg_status_pill">
-
-                <View
-                    android:layout_width="7dp"
-                    android:layout_height="7dp"
-                    android:background="@drawable/bg_dot_green"
-                    android:layout_marginEnd="6dp" />
-
-                <TextView
-                    android:id="@+id/statusText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ready"
-                    android:textColor="#1A1A1A"
-                    android:textSize="12sp"
+                    android:layout_marginTop="4dp"
+                    android:text="New charge"
+                    android:textColor="#1A1C1E"
+                    android:textSize="28sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
-        </LinearLayout>
-
-        <!-- Main Card -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="0dp"
-            app:strokeWidth="1dp"
-            app:strokeColor="#E5E7EB"
-            app:cardBackgroundColor="#FFFFFF">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <!-- Form fields section -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp">
-
-                    <!-- Customer Name -->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="CUSTOMER NAME"
-                        android:textSize="11sp"
-                        android:letterSpacing="0.07"
-                        android:textColor="#888780"
-                        android:textStyle="normal"
-                        android:layout_marginBottom="7dp" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:boxStrokeColor="#DADAD8"
-                        app:boxStrokeWidth="1dp"
-                        app:boxStrokeWidthFocused="1dp"
-                        app:boxCornerRadiusTopStart="10dp"
-                        app:boxCornerRadiusTopEnd="10dp"
-                        app:boxCornerRadiusBottomStart="10dp"
-                        app:boxCornerRadiusBottomEnd="10dp"
-                        app:boxBackgroundColor="#F4F5F7"
-                        app:hintEnabled="false"
-                        android:layout_marginBottom="16dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/customerNameInput"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="#1A1A1A"
-                            android:textStyle="bold"
-                            android:textSize="14sp"
-                            android:hint="Full name" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <!-- Job Reference -->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="JOB REFERENCE #"
-                        android:textSize="11sp"
-                        android:letterSpacing="0.07"
-                        android:textColor="#888780"
-                        android:textStyle="normal"
-                        android:layout_marginBottom="7dp" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:boxStrokeColor="#DADAD8"
-                        app:boxStrokeWidth="1dp"
-                        app:boxStrokeWidthFocused="1dp"
-                        app:boxCornerRadiusTopStart="10dp"
-                        app:boxCornerRadiusTopEnd="10dp"
-                        app:boxCornerRadiusBottomStart="10dp"
-                        app:boxCornerRadiusBottomEnd="10dp"
-                        app:boxBackgroundColor="#F4F5F7"
-                        app:hintEnabled="false"
-                        android:layout_marginBottom="16dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/jobNumInput"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:textColor="#1A1A1A"
-                            android:hint="e.g. JOB-2041" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <!-- Payment Category -->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="PAYMENT CATEGORY"
-                        android:textSize="11sp"
-                        android:letterSpacing="0.07"
-                        android:textColor="#888780"
-                        android:textStyle="normal"
-                        android:layout_marginBottom="7dp" />
-
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="52dp"
-                        android:layout_marginBottom="16dp"
-                        android:background="@drawable/bg_spinner_field">
-
-                        <Spinner
-                            android:id="@+id/categorySpinner"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:paddingHorizontal="14dp"
-                            android:spinnerMode="dropdown"
-                            android:popupBackground="#FFFFFF"
-                            android:background="@null" />
-
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_gravity="end|center_vertical"
-                            android:layout_marginEnd="14dp"
-                            android:src="@android:drawable/arrow_down_float"
-                            android:tint="#888780" />
-                    </FrameLayout>
-
-                    <!-- Job Total (conditional) -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/jobTotalLayout"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        app:prefixText="$"
-                        app:prefixTextColor="#888780"
-                        app:boxStrokeColor="#DADAD8"
-                        app:boxStrokeWidth="1dp"
-                        app:boxStrokeWidthFocused="1dp"
-                        app:boxCornerRadiusTopStart="10dp"
-                        app:boxCornerRadiusTopEnd="10dp"
-                        app:boxCornerRadiusBottomStart="10dp"
-                        app:boxCornerRadiusBottomEnd="10dp"
-                        app:boxBackgroundColor="#F4F5F7"
-                        app:hintEnabled="false"
-                        android:layout_marginBottom="16dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/jobTotalInput"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="#1A1A1A"
-                            android:textStyle="bold"
-                            android:textSize="14sp"
-                            android:hint="0.00"
-                            android:inputType="numberDecimal" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                </LinearLayout>
-
-                <!-- Divider -->
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#F0F1F3" />
-
-                <!-- Amount + CTA section -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="AMOUNT TO CHARGE"
-                        android:textSize="11sp"
-                        android:letterSpacing="0.07"
-                        android:textColor="#888780"
-                        android:textStyle="normal"
-                        android:layout_marginBottom="8dp" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:prefixText="$"
-                        app:prefixTextColor="#888780"
-                        app:boxStrokeColor="#CC0007"
-                        app:boxStrokeWidth="2dp"
-                        app:boxCornerRadiusTopStart="10dp"
-                        app:boxCornerRadiusTopEnd="10dp"
-                        app:boxCornerRadiusBottomStart="10dp"
-                        app:boxCornerRadiusBottomEnd="10dp"
-                        app:boxBackgroundColor="#F4F5F7"
-                        app:hintEnabled="false"
-                        android:layout_marginBottom="20dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/amountInput"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="28sp"
-                            android:textStyle="bold"
-                            android:textColor="#1A1A1A"
-                            android:hint="0.00"
-                            android:inputType="numberDecimal" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/chargeButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="52dp"
-                        android:text="Review &amp; Pay"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:letterSpacing="0.06"
-                        android:backgroundTint="#CC0007"
-                        android:textColor="#FFFFFF"
-                        app:cornerRadius="12dp"
-                        app:elevation="0dp"
-                        app:iconGravity="textStart"
-                        app:iconTint="#FFFFFF"
-                        app:iconPadding="8dp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Security note -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="14dp"
-            android:layout_marginBottom="8dp">
-
-            <ImageView
-                android:layout_width="13dp"
-                android:layout_height="13dp"
-                android:layout_marginEnd="4dp"
-                app:tint="#AAAAAA" />
-
             <TextView
+                android:id="@+id/statusText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Encrypted &amp; secure"
+                android:background="@drawable/bg_pill_neutral"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:text="Ready"
+                android:textColor="#15803D"
                 android:textSize="12sp"
-                android:textColor="#AAAAAA" />
+                android:textStyle="bold" />
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E5E7EB" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="7dp"
+                android:letterSpacing="0.1"
+                android:text="CUSTOMER NAME"
+                android:textColor="#9CA3AF"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/App.Field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/customerNameInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Full name"
+                    android:paddingVertical="16dp"
+                    android:textColor="#1A1C1E"
+                    android:textColorHint="#9CA3AF"
+                    android:textSize="15.5sp"
+                    android:textStyle="bold"
+                    android:inputType="textPersonName|textCapWords" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="7dp"
+                android:letterSpacing="0.1"
+                android:text="JOB REFERENCE #"
+                android:textColor="#9CA3AF"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/App.Field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/jobNumInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="e.g. 1098972394"
+                    android:paddingVertical="16dp"
+                    android:textColor="#1A1C1E"
+                    android:textColorHint="#9CA3AF"
+                    android:textSize="15.5sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="7dp"
+                android:letterSpacing="0.1"
+                android:text="PAYMENT CATEGORY"
+                android:textColor="#9CA3AF"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_field_white">
+
+                <Spinner
+                    android:id="@+id/categorySpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:paddingHorizontal="14dp"
+                    android:popupBackground="#FFFFFF"
+                    android:spinnerMode="dropdown" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="14dp"
+                    android:importantForAccessibility="no"
+                    android:rotation="90"
+                    android:src="@drawable/ic_job_chevron" />
+            </FrameLayout>
+
+            <!-- Job total (shown for deposits) -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/jobTotalLayout"
+                style="@style/App.Field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:visibility="gone"
+                app:prefixText="$"
+                app:prefixTextColor="#6B7280">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/jobTotalInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Job total 0.00"
+                    android:inputType="numberDecimal"
+                    android:paddingVertical="16dp"
+                    android:textColor="#1A1C1E"
+                    android:textColorHint="#9CA3AF"
+                    android:textSize="15.5sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E5E7EB" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="7dp"
+                android:letterSpacing="0.1"
+                android:text="AMOUNT TO CHARGE"
+                android:textColor="#9CA3AF"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/App.Field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:prefixText="$"
+                app:prefixTextColor="#6B7280">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/amountInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="0.00"
+                    android:inputType="numberDecimal"
+                    android:paddingVertical="18dp"
+                    android:textColor="#1A1C1E"
+                    android:textColorHint="#9CA3AF"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/chargeButton"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#CC0007"
+                android:text="Review &amp; pay"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="15.5sp"
+                android:textStyle="bold"
+                app:cornerRadius="14dp"
+                app:elevation="0dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginEnd="6dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_login_shield" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Encrypted &amp; secure"
+                    android:textColor="#6B7280"
+                    android:textSize="12.5sp" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

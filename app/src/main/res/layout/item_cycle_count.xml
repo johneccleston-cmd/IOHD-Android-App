@@ -1,170 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"
-    android:layout_marginHorizontal="16dp"
-    app:cardCornerRadius="12dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="0dp"
     app:cardElevation="0dp"
-    app:strokeColor="#E5E7EB"
-    app:strokeWidth="1dp"
-    app:cardBackgroundColor="#FFFFFF">
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:padding="16dp">
+        android:orientation="vertical">
 
-        <!-- Item Info -->
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_marginEnd="12dp">
-
-            <TextView
-                android:id="@+id/tvItemName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Torsion Spring 207x2x22"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="#111111" />
-
-            <TextView
-                android:id="@+id/tvCategory"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Category: Springs"
-                android:textSize="12sp"
-                android:textColor="#999999"
-                android:layout_marginTop="2dp" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="14dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginTop="4dp">
+                android:layout_marginEnd="12dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvSystemQty"
+                    android:id="@+id/tvItemName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="QTY in Stock: 4"
-                    android:textSize="12sp"
-                    android:textColor="#CC0007"
+                    android:text="Torsion Spring 207x2x22"
+                    android:textColor="#1A1C1E"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
-                <!-- VARIANCE BADGE -->
                 <TextView
-                    android:id="@+id/tvVariance"
+                    android:id="@+id/tvCategory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:background="#FEE2E2"
-                    android:paddingHorizontal="6dp"
-                    android:paddingVertical="2dp"
-                    android:text="Δ -2"
-                    android:textColor="#CC0007"
-                    android:textSize="11sp"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
-            </LinearLayout>
-        </LinearLayout>
+                    android:layout_marginTop="2dp"
+                    android:text="Category: Springs"
+                    android:textColor="#6B7280"
+                    android:textSize="12.5sp" />
 
-        <!-- HYBRID INPUT SECTION -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvSystemQty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="QTY in Stock: 4"
+                        android:textColor="#CC0007"
+                        android:textSize="12.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvVariance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_pill_solid"
+                        android:backgroundTint="#FEE2E2"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="2dp"
+                        android:text="Δ -2"
+                        android:textColor="#CC0007"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnMinus"
-                    android:layout_width="32dp"
-                    android:layout_height="36dp"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:padding="0dp"
-                    android:text="-"
-                    android:textColor="#CC0007"
-                    android:textSize="18sp"
-                    app:backgroundTint="#FEE2E2"
-                    app:cornerRadius="8dp"
-                    app:strokeWidth="0dp" />
-
-                <!-- 🔥 EXPANDED TO 72dp FOR 3-4 DIGIT NUMBERS -->
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                    android:layout_width="72dp"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="6dp"
-                    app:boxStrokeColor="#CC0007"
-                    app:hintEnabled="false">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etActualCount"
-                        android:layout_width="match_parent"
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnMinus"
+                        android:layout_width="34dp"
+                        android:layout_height="38dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:padding="0dp"
+                        android:text="-"
+                        android:textColor="#CC0007"
+                        android:textSize="18sp"
+                        app:backgroundTint="#FEF2F2"
+                        app:cornerRadius="10dp"
+                        app:strokeWidth="0dp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="72dp"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:maxLength="4"
-                        android:paddingHorizontal="2dp"
-                        android:paddingVertical="8dp"
-                        android:textAlignment="center"
-                        android:textColor="#999999"
-                        android:textCursorDrawable="@null"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_marginHorizontal="6dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:boxStrokeColor="@color/login_box_stroke"
+                        app:hintEnabled="false">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etActualCount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:maxLength="4"
+                            android:paddingHorizontal="2dp"
+                            android:paddingVertical="8dp"
+                            android:textAlignment="center"
+                            android:textColor="#9CA3AF"
+                            android:textCursorDrawable="@null"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnPlus"
+                        android:layout_width="34dp"
+                        android:layout_height="38dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:padding="0dp"
+                        android:text="+"
+                        android:textColor="#CC0007"
+                        android:textSize="18sp"
+                        app:backgroundTint="#FEF2F2"
+                        app:cornerRadius="10dp"
+                        app:strokeWidth="0dp" />
+                </LinearLayout>
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnPlus"
-                    android:layout_width="32dp"
-                    android:layout_height="36dp"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
+                    android:id="@+id/btnConfirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:layout_marginTop="6dp"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
+                    android:minWidth="0dp"
                     android:padding="0dp"
-                    android:text="+"
-                    android:textColor="#CC0007"
+                    android:text="✓"
+                    android:textColor="#FFFFFF"
                     android:textSize="18sp"
-                    app:backgroundTint="#FEE2E2"
-                    app:cornerRadius="8dp"
-                    app:strokeWidth="0dp" />
+                    android:textStyle="bold"
+                    app:backgroundTint="#CC0007"
+                    app:cornerRadius="10dp" />
             </LinearLayout>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnConfirm"
-                android:layout_width="match_parent"
-                android:layout_height="34dp"
-                android:layout_marginTop="6dp"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:minWidth="0dp"
-                android:padding="0dp"
-                android:text="✓"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:backgroundTint="#CC0007"
-                app:cornerRadius="8dp" />
-
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="20dp"
+            android:background="#E5E7EB" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

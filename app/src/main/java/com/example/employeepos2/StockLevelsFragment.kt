@@ -45,8 +45,8 @@ class StockLevelsFragment : Fragment(R.layout.fragment_stock_levels) {
         private const val AUTH_TOKEN = "Bearer 3cf46a8e52e497f9a0bd4fdf7aab227cb2291bcf084bfa9ff60bc88d58090cf7"
         private const val RED_PRIMARY = "#CC0007"
         private const val CHIP_SELECTED_BG = "#CC0007"
-        private const val CHIP_UNSELECTED_BG = "#F2F2F2"
-        private const val CHIP_CORNER_DP = 20f
+        private const val CHIP_UNSELECTED_BG = "#F1F5F9"
+        private const val CHIP_CORNER_DP = 999f
     }
 
     private lateinit var rvCategories: RecyclerView
@@ -232,7 +232,7 @@ class StockLevelsFragment : Fragment(R.layout.fragment_stock_levels) {
 
             val isSelected = category == selected
             val bgColor = if (isSelected) CHIP_SELECTED_BG else CHIP_UNSELECTED_BG
-            val textColor = if (isSelected) Color.WHITE else Color.parseColor("#333333")
+            val textColor = if (isSelected) Color.WHITE else Color.parseColor("#4B5563")
 
             holder.chip.background = roundedBackground(
                 Color.parseColor(bgColor), CHIP_CORNER_DP
@@ -270,13 +270,10 @@ class StockLevelsFragment : Fragment(R.layout.fragment_stock_levels) {
             holder.tvCategory.text = item.category
             holder.tvQtyBadge.text = if (status == StockStatus.OUT) "Out" else "${item.qty}"
             holder.tvQtyBadge.background = roundedBackground(
-                lighten(status.labelColor, 0.88f), 12f
+                lighten(status.labelColor, 0.88f), 999f
             )
             holder.tvQtyBadge.setTextColor(status.labelColor)
 
-            // Subtle left-border accent for low/out items
-            val borderColor = if (status == StockStatus.OK) Color.TRANSPARENT else status.labelColor
-            (holder.itemView.background as? GradientDrawable)?.setStroke(dpToPx(3), borderColor)
         }
 
         override fun getItemCount() = items.size
@@ -288,15 +285,14 @@ class StockLevelsFragment : Fragment(R.layout.fragment_stock_levels) {
         val card = LinearLayout(ctx).apply {
             orientation = LinearLayout.HORIZONTAL
             gravity = Gravity.CENTER_VERTICAL
-            background = roundedBackground(Color.WHITE, 12f)
-            elevation = dpToPx(1).toFloat()
+            background = androidx.core.content.ContextCompat.getDrawable(ctx, R.drawable.bg_row_divider)
             val lp = RecyclerView.LayoutParams(
                 RecyclerView.LayoutParams.MATCH_PARENT,
                 RecyclerView.LayoutParams.WRAP_CONTENT
             )
-            lp.setMargins(dpToPx(12), dpToPx(5), dpToPx(12), dpToPx(5))
+            lp.setMargins(0, 0, 0, 0)
             layoutParams = lp
-            setPadding(dpToPx(16), dpToPx(14), dpToPx(16), dpToPx(14))
+            setPadding(dpToPx(20), dpToPx(14), dpToPx(20), dpToPx(14))
         }
 
         // Left: name + category stacked
@@ -308,14 +304,14 @@ class StockLevelsFragment : Fragment(R.layout.fragment_stock_levels) {
         val tvName = TextView(ctx).apply {
             tag = "name"
             textSize = 16f
-            setTextColor(Color.parseColor("#111111"))
-            // font weight via typeface if needed
+            setTextColor(Color.parseColor("#1A1C1E"))
+            setTypeface(typeface, android.graphics.Typeface.BOLD)
         }
 
         val tvCategory = TextView(ctx).apply {
             tag = "category"
             textSize = 12f
-            setTextColor(Color.parseColor("#888888"))
+            setTextColor(Color.parseColor("#6B7280"))
             setPadding(0, dpToPx(2), 0, 0)
         }
 

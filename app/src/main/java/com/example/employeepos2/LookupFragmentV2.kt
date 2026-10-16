@@ -33,6 +33,10 @@ class LookupFragmentV2 : Fragment(R.layout.activity_lookup) {
         val jobIdInput = view.findViewById<TextInputEditText>(R.id.lookupJobId)
         val fetchBtn = view.findViewById<MaterialButton>(R.id.btnFetchJob)
 
+        jobIdInput.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH) { fetchBtn.performClick(); true } else false
+        }
+
         fetchBtn.setOnClickListener {
             val jobId = jobIdInput.text.toString().trim()
             if (jobId.isEmpty()) {
@@ -41,7 +45,7 @@ class LookupFragmentV2 : Fragment(R.layout.activity_lookup) {
             }
 
             fetchBtn.isEnabled = false
-            fetchBtn.text = "SEARCHING..."
+            fetchBtn.text = "Searching…"
 
             viewLifecycleOwner.lifecycleScope.launch {
                 fetchJobData(jobId, fetchBtn)
@@ -87,14 +91,14 @@ class LookupFragmentV2 : Fragment(R.layout.activity_lookup) {
                     val msg = json.optString("error", "Job Not Found")
                     Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show()
                     fetchBtn.isEnabled = true
-                    fetchBtn.text = "FETCH DETAILS"
+                    fetchBtn.text = "Fetch details"
                 }
             }
         } catch (e: Exception) {
             withContext(Dispatchers.Main) {
                 Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_LONG).show()
                 fetchBtn.isEnabled = true
-                fetchBtn.text = "FETCH DETAILS"
+                fetchBtn.text = "Fetch details"
             }
         }
     }

@@ -1,53 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="8dp"
-    app:cardBackgroundColor="#FFFFFF"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="2dp"
-    app:strokeWidth="1dp"
-    app:strokeColor="#E5E7EB">
+    android:background="@drawable/bg_row_divider"
+    android:orientation="vertical"
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tvTechName"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_weight="1"
+            android:text="Tech Name"
+            android:textColor="#1A1C1E"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tvTechName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Tech Name"
-                android:textColor="#1A1C1E"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvTechAllowance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="$1,000 Left"
-                android:textColor="#CC0007"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <com.example.employeepos2.LiquidProgressBar
-            android:id="@+id/pbTechAllowance"
-            android:layout_width="match_parent"
-            android:layout_height="16dp"
-            android:layout_marginTop="12dp" />
-
+        <TextView
+            android:id="@+id/tvTechAllowance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$1,000 Left"
+            android:textColor="#CC0007"
+            android:textSize="14sp"
+            android:textStyle="bold" />
     </LinearLayout>
-</com.google.android.material.card.MaterialCardView>
+
+    <com.example.employeepos2.LiquidProgressBar
+        android:id="@+id/pbTechAllowance"
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:layout_marginTop="12dp" />
+</LinearLayout>

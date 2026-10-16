@@ -1,49 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#FFFFFF"
-    android:padding="16dp">
-
-
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none"
-        android:paddingTop="16dp"
-        android:paddingHorizontal="16dp"
-        android:clipToPadding="false">
+    android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/llTechFilters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="18dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.1"
+                    android:text="INVENTORY"
+                    android:textColor="#CC0007"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Stock search"
+                    android:textColor="#1A1C1E"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingHorizontal="20dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/llTechFilters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+        </HorizontalScrollView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/App.Field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
+            app:startIconDrawable="@drawable/ic_pay_search_grey"
+            app:startIconTint="@null">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etSearchBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Search parts"
+                android:inputType="textNoSuggestions"
+                android:maxLines="1"
+                android:paddingVertical="14dp"
+                android:textColor="#1A1C1E"
+                android:textColorHint="#9CA3AF"
+                android:textSize="15.5sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E5E7EB" />
+
+        <ProgressBar
+            android:id="@+id/searchLoader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" />
-    </HorizontalScrollView>
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
+            android:indeterminateTint="#CC0007" />
 
-    <EditText
-        android:id="@+id/etSearchBar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@android:drawable/editbox_background"
-        android:hint="Type part name to search..."
-        android:textColorHint="#757575"
-        android:textColor="#000000"
-        android:paddingStart="12dp"
-        android:maxLines="1"
-        android:inputType="textNoSuggestions" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSearchResults"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-    <ProgressBar
-        android:id="@+id/searchLoader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="32dp" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvSearchResults"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="12dp" />
 </LinearLayout>

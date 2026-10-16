@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="32dp"
-    android:background="#F8F9FC">
+    android:background="#FFFFFF">
 
     <ImageView
         android:layout_width="220dp"
@@ -21,7 +21,7 @@
         android:text="SERVICE FUSION LOOKUP"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="#000000"
+        android:textColor="#1A1C1E"
         android:layout_marginBottom="24dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -30,8 +30,8 @@
         android:layout_height="wrap_content"
         android:hint="Enter Job Number"
         app:boxStrokeColor="#CC0007"
-        app:hintTextColor="#000000"
-        android:textColorHint="#000000"
+        app:hintTextColor="#CC0007"
+        android:textColorHint="#6B7280"
         android:layout_marginBottom="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -41,7 +41,7 @@
             android:inputType="number"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="#000000" />
+            android:textColor="#1A1C1E" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
